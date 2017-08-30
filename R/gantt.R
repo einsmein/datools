@@ -1,18 +1,3 @@
-library(plotly)
-
-# Read in data
-tmpdf <-
-  read.csv(
-    "https://cdn.rawgit.com/plotly/datasets/master/GanttChart-updated.csv",
-    stringsAsFactors = F
-  )
-
-# Convert to dates
-tmpdf$Start <- as.Date(tmpdf$Start, format = "%m/%d/%Y")
-
-# Sample client name
-client = "Sample Client"
-
 #' Plot a Gantt chart using plotly
 #'
 #' A Gantt chart is plotted using plotly. The format of the data.frame given to
