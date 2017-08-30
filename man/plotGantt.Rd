@@ -30,6 +30,9 @@ Task 7 2016-09-07       80        B
 Task 8 2016-11-26       10        B
 where the duration is given in days.
 }
+\details{
+Originally source appeared on \url{https://www.r-bloggers.com/gantt-charts-in-r-using-plotly/}.
+}
 \examples{
 tmpdf <- structure(list(Task = c("Task 1", "Task 2", "Task 3", "Task 4",
 "Task 5", "Task 6", "Task 7", "Task 8"), Start = structure(c(16801,
