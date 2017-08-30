@@ -28,9 +28,13 @@ client = "Sample Client"
 #' Task 8 2016-11-26       10        B
 #' where the duration is given in days.
 #'
+#' Originally source appeared on \url{https://www.r-bloggers.com/gantt-charts-in-r-using-plotly/}.
+#'
 #' @param mydf the data.frame containing the information of the project
 #' @param client the client name given as a string
+#' @param brewerpalname the name of the palette to use from RColorBrewer which defaults to "Set3"
 #' @importFrom plotly add_trace plot_ly layout
+#' @importFrom RColorBrewer brewer.pal
 #'
 #' @return a plotly object
 #' @export
@@ -43,9 +47,9 @@ client = "Sample Client"
 #' "B", "C", "C", "C", "A", "B", "B")), .Names = c("Task", "Start",
 #' "Duration", "Resource"), row.names = c(NA, -8L), class = "data.frame")
 #' plotGantt(tmpdf, "Sample Client")
-plotGantt <- function(mydf, client) {
+plotGantt <- function(mydf, client, brewerpalname = "Set3") {
   # Choose colors based on number of resources
-  cols <- RColorBrewer::brewer.pal(length(unique(mydf$Resource)), name = "Set3")
+  cols <- RColorBrewer::brewer.pal(length(unique(mydf$Resource)), name = brewerpalname)
   mydf$color <- factor(mydf$Resource, labels = cols)
 
   # Initialize empty plot

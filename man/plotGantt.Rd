@@ -4,12 +4,14 @@
 \alias{plotGantt}
 \title{Plot a Gantt chart using plotly}
 \usage{
-plotGantt(mydf, client)
+plotGantt(mydf, client, brewerpalname = "Set3")
 }
 \arguments{
 \item{mydf}{the data.frame containing the information of the project}
 
 \item{client}{the client name given as a string}
+
+\item{brewerpalname}{the name of the palette to use from RColorBrewer which defaults to "Set3"}
 }
 \value{
 a plotly object
