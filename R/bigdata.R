@@ -2,21 +2,20 @@
 #'
 #' @param csv_file name of the CSV file to convert
 #' @param sqlite_file name of the newly created sqlite file
-#' @param table_name name of the table to store the data table in the sqlite
-#'      dbase
-#' @param pre_process_size the number of lines to check the data types of the
-#'      individual columns (default 1000)
+#' @param table_name name of the table to store the data table in the sqlite dbase
+#' @param pre_process_size the number of lines to check the data types of the individual columns (default 1000)
 #' @param chunk_size the number of lines to read for each chunk (default 50000)
 #' @param delim the field delimiter to use (default ,)
 #' @importFrom RSQLite SQLite dbWriteTable
 #' @importFrom readr read_delim
 #' @importFrom DBI dbConnect
 #' @importFrom dplyr select_if
+#' @importFrom lubridate is.Date is.POSIXt
 #' @examples
 #' a<-1
 csvToSQLite <- function(csv_file, sqlite_file, table_name,
-                          pre_process_size = 1000, chunk_size = 50000,
-                          delim = ",") {
+                        pre_process_size = 1000, chunk_size = 50000,
+                        delim = ",") {
   con <- DBI::dbConnect(RSQLite::SQLite(), dbname = sqlite_file)
 
   # read an extract of the data to extract the colnames and types
@@ -39,8 +38,8 @@ csvToSQLite <- function(csv_file, sqlite_file, table_name,
 
   # readr chunk functionality
   readr::read_delim_chunked(csv_file, append_to_sqlite, delim = ",",
-                     skip = pre_process_size, col_names = colnames(df),
-                     col_types = spec(df), chunk_size = chunk_size,
-                     progress = FALSE)
+                            skip = pre_process_size, col_names = colnames(df),
+                            col_types = spec(df), chunk_size = chunk_size,
+                            progress = FALSE)
   DBI::dbDisconnect(con)
 }
