@@ -1,0 +1,46 @@
+#' Save a single CSV-table into a single table sqlite database
+#'
+#' @param csv_file name of the CSV file to convert
+#' @param sqlite_file name of the newly created sqlite file
+#' @param table_name name of the table to store the data table in the sqlite
+#'      dbase
+#' @param pre_process_size the number of lines to check the data types of the
+#'      individual columns (default 1000)
+#' @param chunk_size the number of lines to read for each chunk (default 50000)
+#' @param delim the field delimiter to use (default ,)
+#' @importFrom RSQLite SQLite dbWriteTable
+#' @importFrom readr read_delim
+#' @importFrom DBI dbConnect
+#' @importFrom dplyr select_if
+#' @examples
+#' a<-1
+csvToSQLite <- function(csv_file, sqlite_file, table_name,
+                          pre_process_size = 1000, chunk_size = 50000,
+                          delim = ",") {
+  con <- DBI::dbConnect(RSQLite::SQLite(), dbname = sqlite_file)
+
+  # read an extract of the data to extract the colnames and types
+  # to figure out the date ande datetime columns
+  df <- readr::read_delim(csv_file, delim, n_max = pre_process_size)
+  date_cols <- df %>% dplyr::select_if(lubridate::is.Date) %>% colnames()
+  datetime_cols <- df %>% dplyr::select_if(lubridate::is.POSIXt) %>% colnames()
+  # write this first batch of lines to SQLITE table, converting dates to string representation
+  df[ , date_cols] <- as.character.Date(df[ , date_cols])
+  df[ , datetime_cols] <- as.character.POSIXt(df[ , datetime_cols])
+  RSQLite::dbWriteTable(con, table_name, as.data.frame(df), overwrite = TRUE)
+
+  # subfunction that appends new sections to the table
+  append_to_sqlite <- function(x, pos) {
+    x <- as.data.frame(x)
+    x[ , date_cols] <- as.character.Date(x[ , date_cols])
+    x[ , datetime_cols] <- as.character.POSIXt(x[ , datetime_cols])
+    RSQLite::dbWriteTable(con, table_name, x, append = TRUE)
+  }
+
+  # readr chunk functionality
+  readr::read_delim_chunked(csv_file, append_to_sqlite, delim = ",",
+                     skip = pre_process_size, col_names = colnames(df),
+                     col_types = spec(df), chunk_size = chunk_size,
+                     progress = FALSE)
+  DBI::dbDisconnect(con)
+}
