@@ -7,12 +7,21 @@
 #' @param chunk_size the number of lines to read for each chunk (default 50000)
 #' @param delim the field delimiter to use (default ,)
 #' @importFrom RSQLite SQLite dbWriteTable
-#' @importFrom readr read_delim
+#' @importFrom readr read_delim spec
 #' @importFrom DBI dbConnect
 #' @importFrom dplyr select_if
 #' @importFrom lubridate is.Date is.POSIXt
 #' @examples
-#' a<-1
+#' library(RSQLite)
+#' sqlite_file <- "example.sqlite"
+#' table_name <- "example"
+#' write.csv(airquality, "example.csv", row.names=FALSE)
+#' csvToSQLite("example.csv", sqlite_file, table_name,
+#'               pre_process_size = 1000, chunk_size = 50000)
+#' mydb <- src_sqlite(sqlite_file, create = FALSE)
+#' mydata <- tbl(mydb, table_name)
+#' head(mydata)
+#' @export
 csvToSQLite <- function(csv_file, sqlite_file, table_name,
                         pre_process_size = 1000, chunk_size = 50000,
                         delim = ",") {
@@ -39,7 +48,7 @@ csvToSQLite <- function(csv_file, sqlite_file, table_name,
   # readr chunk functionality
   readr::read_delim_chunked(csv_file, append_to_sqlite, delim = ",",
                             skip = pre_process_size, col_names = colnames(df),
-                            col_types = spec(df), chunk_size = chunk_size,
+                            col_types = readr::spec(df), chunk_size = chunk_size,
                             progress = FALSE)
   DBI::dbDisconnect(con)
 }

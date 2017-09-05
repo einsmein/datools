@@ -24,5 +24,13 @@ csvToSQLite(csv_file, sqlite_file, table_name, pre_process_size = 1000,
 Save a single CSV-table into a single table sqlite database
 }
 \examples{
-a<-1
+library(RSQLite)
+sqlite_file <- "example.sqlite"
+table_name <- "example"
+write.csv(airquality, "example.csv", row.names=FALSE)
+csvToSQLite("example.csv", sqlite_file, table_name,
+              pre_process_size = 1000, chunk_size = 50000)
+mydb <- src_sqlite(sqlite_file, create = FALSE)
+mydata <- tbl(mydb, table_name)
+head(mydata)
 }
