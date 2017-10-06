@@ -21,7 +21,9 @@ csvToSQLite(csv_file, sqlite_file, table_name, pre_process_size = 1000,
 \item{delim}{the field delimiter to use (default ,)}
 }
 \description{
-Save a single CSV-table into a single table sqlite database
+This function is useful for taking huge CSV files that do not fit into RAM
+and store them as a SQLite db which can be streamed via dplyr. This way you
+can work with really big data files without being limited by your machines RAM.
 }
 \examples{
 library(RSQLite)

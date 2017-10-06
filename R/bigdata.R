@@ -1,5 +1,9 @@
 #' Save a single CSV-table into a single table sqlite database
 #'
+#' This function is useful for taking huge CSV files that do not fit into RAM
+#' and store them as a SQLite db which can be streamed via dplyr. This way you
+#' can work with really big data files without being limited by your machines RAM.
+#'
 #' @param csv_file name of the CSV file to convert
 #' @param sqlite_file name of the newly created sqlite file
 #' @param table_name name of the table to store the data table in the sqlite dbase
