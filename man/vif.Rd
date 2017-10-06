@@ -10,7 +10,7 @@ vif(mod)
 \item{mod}{the data to process}
 }
 \value{
-the VIF for the given data
+A matrix containing the VIF and standardised VIF factors
 }
 \description{
 Calculate the Variance Inflation Factor for a dataset.

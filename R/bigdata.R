@@ -13,10 +13,11 @@
 #' @importFrom RSQLite SQLite dbWriteTable
 #' @importFrom readr read_delim spec
 #' @importFrom DBI dbConnect
-#' @importFrom dplyr select_if
+#' @importFrom dplyr select_if %>% src_sqlite
 #' @importFrom lubridate is.Date is.POSIXt
 #' @examples
 #' library(RSQLite)
+#' library(dplyr)
 #' sqlite_file <- "example.sqlite"
 #' table_name <- "example"
 #' write.csv(airquality, "example.csv", row.names=FALSE)

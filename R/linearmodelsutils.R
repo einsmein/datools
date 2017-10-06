@@ -3,33 +3,19 @@
 #' Calculate the Variance Inflation Factor for a dataset.
 #'
 #' @param mod the data to process
-#' @return the VIF for the given data
+#' @return A matrix containing the VIF and standardised VIF factors
 #' @export
 #' @examples
 #' a <- 1
 vif <- function(mod) UseMethod("vif")
 
-#' Calculate the VIF for data
-#'
-#' Calculate the Variance Inflation Factor for a dataset.
-#' @param mod the data to process
-#' @return A matrix containing the VIF and standardised VIF factors
 #' @export
 #' @method vif lm
-#' @examples
-#' a <- 1
 vif.lm <- function(mod) vif.default(mod)
 
-#' Variance inflation factors of a data frame
-#'
-#' Contains a wrapper function around car::vif to calculate the variance inflation of data.frames
-#'
-#' @param mod A data.frame with numerical and factor variables
-#' @return A matrix containing the VIF and standardised VIF factors
 #' @export
 #' @method vif data.frame
-#' @examples
-#' a <- 1
+#' @importFrom stats as.formula coef coefficients cov2cor lm model.matrix vcov
 vif.data.frame <- function(mod, ...){
   mod <- cbind(dummyResponse = 1, mod)
   my_formula <- as.formula(mod)

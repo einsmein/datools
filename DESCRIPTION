@@ -3,7 +3,7 @@ Title: A set of useful tools for machine learning consulting using R
 Version: 0.0.0.9000
 Authors@R: person("Michael", "Green", email = "micke.green@gmail.com", role = c("aut", "cre"))
 Description: A set of useful tools for machine learning consulting and other data science oriented solutions using R.
-Depends: R (>= 3.4.1)
+Depends: R (>= 3.4.1), stats
 License: GPL-3 + file LICENSE
 Encoding: UTF-8
 LazyData: true

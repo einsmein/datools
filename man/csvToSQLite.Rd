@@ -27,6 +27,7 @@ can work with really big data files without being limited by your machines RAM.
 }
 \examples{
 library(RSQLite)
+library(dplyr)
 sqlite_file <- "example.sqlite"
 table_name <- "example"
 write.csv(airquality, "example.csv", row.names=FALSE)
