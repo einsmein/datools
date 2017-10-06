@@ -6,7 +6,10 @@
 #' @return A matrix containing the VIF and standardised VIF factors
 #' @export
 #' @examples
-#' a <- 1
+#' library(MASS)
+#' data("birthwt")
+#' vif(lm(bwt~low+smoke+age+race, data=birthwt))
+#' vif(birthwt)
 vif <- function(mod) UseMethod("vif")
 
 #' @export

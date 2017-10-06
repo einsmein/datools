@@ -14,6 +14,7 @@
 #' @importFrom readr read_delim spec
 #' @importFrom DBI dbConnect
 #' @importFrom dplyr select_if %>% src_sqlite
+#' @importFrom dbplyr as.sql
 #' @importFrom lubridate is.Date is.POSIXt
 #' @examples
 #' library(RSQLite)
