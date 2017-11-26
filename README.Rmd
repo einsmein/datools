@@ -40,6 +40,7 @@ Say you have a vector of weekdays and you would really like to have that one hot
 ```{r example}
 ## basic example code
 library(datools)
+library(lubridate)
 oneHotEncoder(x=wday(seq(as.Date("2017-10-07"), by ="days", length.out = 10), 
                      label = TRUE))
 ```
