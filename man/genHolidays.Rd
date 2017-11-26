@@ -5,11 +5,14 @@
 \title{Generate public holidays for all markets}
 \usage{
 genHolidays(years = (lubridate::year(Sys.Date()) -
-  2):lubridate::year(Sys.Date()))
+  2):lubridate::year(Sys.Date()), country)
 }
 \arguments{
 \item{years}{the years for which to generate the holidays given as 2013:2017
 as an example where the default is the last three years}
+
+\item{country}{specifies which specific country to focus on except the "global"
+holidays where the possible values are "CA", "CH", "DE", "FR", "GB", "IT", "JP", "US"}
 }
 \value{
 a one hot encoded tibble where each column is a holiday and the first
