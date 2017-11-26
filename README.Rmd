@@ -1,0 +1,45 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+```
+
+# datools
+
+The goal of datools is to cover a lot of convenient tools useful for machine learning consulting using R
+
+# Build status
+
+| Test    | Status     |
+|---------|------------|
+| Travis  | [![Build Status](https://travis-ci.org/DoktorMike/datools.svg?branch=master)](https://travis-ci.org/DoktorMike/datools)           |
+| Codecov | [![Coverage Status](https://img.shields.io/codecov/c/github/DoktorMike/datools/master.svg)](https://codecov.io/github/DoktorMike/datools?branch=master)           |
+| Wercker | [![wercker status](https://app.wercker.com/status/82dcdeafb5fae145580366ca3f95fc6d/s/master "wercker status")](https://app.wercker.com/project/byKey/82dcdeafb5fae145580366ca3f95fc6d) |
+
+## Installation
+
+You can install datools from github with:
+
+```{r gh-installation, eval = FALSE}
+# install.packages("devtools")
+devtools::install_github("DoktorMike/datools")
+```
+
+## Example
+
+Say you have a vector of weekdays and you would really like to have that one hot encoded for use in your algorithms then oneHotEncoder comes to the rescue!
+
+```{r example}
+## basic example code
+library(datools)
+oneHotEncoder(x=wday(seq(as.Date("2017-10-07"), by ="days", length.out = 10), 
+                     label = TRUE))
+```
