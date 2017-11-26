@@ -16,6 +16,11 @@ context("Value functions")
 tmpvec <- c(NA, 3:5, NA, NA, 4, 4, 10, NA)
 expect_equal(sum(naToZero(tmpvec)), sum(tmpvec, na.rm = T))
 expect_equal(sum(naToZero(tmpvec)), 30)
+expect_equal(sum(naToZero(tmpvec)), sum(naToVal(tmpvec, 0)))
+
+expect_equal(sum(nonFinToVal(tmpvec)), sum(tmpvec, na.rm = T))
+expect_equal(sum(nonFinToVal(tmpvec)), 30)
+expect_equal(sum(nonFinToVal(tmpvec, 0)), sum(naToVal(tmpvec, 0)))
 
 context("Date functions")
 expect_equal(c("201747", "201548", "200953"), datools::dateToIsoWeek(c("2017-11-23", "2015-11-23", "2009-12-31")))
