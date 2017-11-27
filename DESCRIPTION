@@ -11,4 +11,7 @@ RoxygenNote: 6.0.1
 Imports: plotly,
     RColorBrewer, DBI, RSQLite, readr, dplyr, tidyr, lubridate, dbplyr, ggplot2, ISOweek, reshape2, timeDate, utils
 Suggests: testthat, microbenchmark,
-    covr, MASS
+    covr, MASS,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
