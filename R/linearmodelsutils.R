@@ -58,3 +58,5 @@ vif.default <- function (mod)
   result[, 3] <- result[, 1]^(1/(2 * result[, 2]))
   result
 }
+
+
