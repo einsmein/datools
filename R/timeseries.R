@@ -26,6 +26,6 @@
 #' ggplot(gather(testdf, key, val, -id), aes(y=val, x=id, color=key)) + geom_line()
 find_lag<-function(x,y, lag.max=as.integer(length(x)/2)) {
   if(length(x) != length(y)) stop("Vectors of equal length required")
-  res <- stats::ccf(x, y, lag.max = lag.max, na.action = stats::na.omit)
+  res <- stats::ccf(x, y, lag.max = lag.max, na.action = stats::na.omit, plot = FALSE)
   res$lag[which.max(abs(res$acf))]
 }

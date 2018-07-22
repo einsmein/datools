@@ -38,3 +38,9 @@ context("Data encoding")
 #   class = "data.frame", .Names = c("Data", "Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"),
 #   row.names = c(NA,-10L))
 # expect_equal(res, oneHotEncoder(x=seq(as.Date("2017-01-01"), by ="day", length.out = 10), f=function(x) lubridate::wday(x, label = TRUE)))
+
+context("Time series")
+x <- sin(seq(1, 10, length.out = 30))
+y <- lag(x,5) + rnorm(length(x), 0, 0.2)
+expect_gte(abs(find_lag(x, y)), 4)
+expect_lte(abs(find_lag(x, y)), 6)
