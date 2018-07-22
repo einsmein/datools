@@ -8,11 +8,12 @@ The goal of datools is to cover a lot of convenient tools useful for machine lea
 Build status
 ============
 
-| Test    | Status                                                                                                                                                                                 |
-|---------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Travis  | [![Build Status](https://travis-ci.org/DoktorMike/datools.svg?branch=master)](https://travis-ci.org/DoktorMike/datools)                                                                |
-| Codecov | [![Coverage Status](https://img.shields.io/codecov/c/github/DoktorMike/datools/master.svg)](https://codecov.io/github/DoktorMike/datools?branch=master)                                |
-| Wercker | [![wercker status](https://app.wercker.com/status/82dcdeafb5fae145580366ca3f95fc6d/s/master "wercker status")](https://app.wercker.com/project/byKey/82dcdeafb5fae145580366ca3f95fc6d) |
+| Test      | Status                                                                                                                                                                                 |
+|-----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Travis    | [![Build Status](https://travis-ci.org/DoktorMike/datools.svg?branch=master)](https://travis-ci.org/DoktorMike/datools)                                                                |
+| Codecov   | [![Coverage Status](https://img.shields.io/codecov/c/github/DoktorMike/datools/master.svg)](https://codecov.io/github/DoktorMike/datools?branch=master)                                |
+| Wercker   | [![wercker status](https://app.wercker.com/status/82dcdeafb5fae145580366ca3f95fc6d/s/master "wercker status")](https://app.wercker.com/project/byKey/82dcdeafb5fae145580366ca3f95fc6d) |
+| Lifecycle | [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)                                                                |
 
 Installation
 ------------
@@ -40,15 +41,15 @@ library(lubridate)
 #>     date
 oneHotEncoder(x=wday(seq(as.Date("2017-10-07"), by ="days", length.out = 10), 
                      label = TRUE))
-#>     Data Sun Mon Tues Wed Thurs Fri Sat
-#> 1    Sat   0   0    0   0     0   0   1
-#> 2    Sun   1   0    0   0     0   0   0
-#> 3    Mon   0   1    0   0     0   0   0
-#> 4   Tues   0   0    1   0     0   0   0
-#> 5    Wed   0   0    0   1     0   0   0
-#> 6  Thurs   0   0    0   0     1   0   0
-#> 7    Fri   0   0    0   0     0   1   0
-#> 8    Sat   0   0    0   0     0   0   1
-#> 9    Sun   1   0    0   0     0   0   0
-#> 10   Mon   0   1    0   0     0   0   0
+#>    Data Sun Mon Tue Wed Thu Fri Sat
+#> 1   Sat   0   0   0   0   0   0   1
+#> 2   Sun   1   0   0   0   0   0   0
+#> 3   Mon   0   1   0   0   0   0   0
+#> 4   Tue   0   0   1   0   0   0   0
+#> 5   Wed   0   0   0   1   0   0   0
+#> 6   Thu   0   0   0   0   1   0   0
+#> 7   Fri   0   0   0   0   0   1   0
+#> 8   Sat   0   0   0   0   0   0   1
+#> 9   Sun   1   0   0   0   0   0   0
+#> 10  Mon   0   1   0   0   0   0   0
 ```
