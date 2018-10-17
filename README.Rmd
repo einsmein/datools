@@ -45,3 +45,12 @@ library(lubridate)
 oneHotEncoder(x=wday(seq(as.Date("2017-10-07"), by ="days", length.out = 10), 
                      label = TRUE))
 ```
+
+## PCA fun
+
+```{r pcaplot, echo=TRUE, fig.width=10, message=FALSE, warning=FALSE, paged.print=FALSE}
+library(datools)
+data(iris)
+plotPCAComponent(iris[,-5], iris$Species) + theme_minimal()
+```
+

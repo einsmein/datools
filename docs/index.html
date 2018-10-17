@@ -29,7 +29,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">datools</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.0.9000</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.1</span>
       </span>
     </div>
 
@@ -99,6 +99,10 @@
 <td>Wercker</td>
 <td><a href="https://app.wercker.com/project/byKey/82dcdeafb5fae145580366ca3f95fc6d"><img src="https://app.wercker.com/status/82dcdeafb5fae145580366ca3f95fc6d/s/master" title="wercker status" alt="wercker status"></a></td>
 </tr>
+<tr class="even">
+<td>Lifecycle</td>
+<td><a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="lifecycle"></a></td>
+</tr>
 </tbody>
 </table>
 <div id="installation" class="section level2">
@@ -133,6 +137,14 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
 <span class="co">#&gt; 8   Sat   0   0   0   0   0   0   1</span>
 <span class="co">#&gt; 9   Sun   1   0   0   0   0   0   0</span>
 <span class="co">#&gt; 10  Mon   0   1   0   0   0   0   0</span></code></pre></div>
+</div>
+<div id="pca-fun" class="section level2">
+<h2 class="hasAnchor">
+<a href="#pca-fun" class="anchor"></a>PCA fun</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(datools)
+<span class="kw">data</span>(iris)
+<span class="kw"><a href="reference/plotPCAComponent.html">plotPCAComponent</a></span>(iris[,<span class="op">-</span><span class="dv">5</span>], iris<span class="op">$</span>Species) <span class="op">+</span><span class="st"> </span><span class="kw">theme_minimal</span>()</code></pre></div>
+<p><img src="README-pcaplot-1.png" width="960"></p>
 </div>
 </div>
   </div>

@@ -53,3 +53,14 @@ oneHotEncoder(x=wday(seq(as.Date("2017-10-07"), by ="days", length.out = 10),
 #> 9   Sun   1   0   0   0   0   0   0
 #> 10  Mon   0   1   0   0   0   0   0
 ```
+
+PCA fun
+-------
+
+``` r
+library(datools)
+data(iris)
+plotPCAComponent(iris[,-5], iris$Species) + theme_minimal()
+```
+
+![](README-pcaplot-1.png)
