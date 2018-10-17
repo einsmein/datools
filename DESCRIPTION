@@ -17,3 +17,4 @@ Suggests: testthat, microbenchmark,
     rmarkdown
 VignetteBuilder: knitr
 Remotes: vqv/ggbiplot
+BugReports: https://github.com/DoktorMike/datools/issues
