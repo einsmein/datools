@@ -47,6 +47,8 @@ oneHotEncoder(x=wday(seq(as.Date("2017-10-07"), by ="days", length.out = 10),
 
 ## PCA fun
 
+If you ever need to illustrate for your peers what sort of direction your original data is pointing to in the PCA space this function comes very much in handy.
+
 ```{r pcaplot, echo=TRUE, fig.width=10, message=FALSE, warning=FALSE, paged.print=FALSE}
 library(datools)
 data(iris)

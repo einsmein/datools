@@ -1,20 +1,14 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-datools
-=======
+datools <img src="man/figures/logo.png" align="right" />
+========================================================
 
 The goal of datools is to cover a lot of convenient tools useful for machine learning consulting using R
 
 Build status
 ============
 
-| Test          | Status                                                                                                                                                                                 |
-|---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Travis        | [![Build Status](https://travis-ci.org/DoktorMike/datools.svg?branch=master)](https://travis-ci.org/DoktorMike/datools)                                                                |
-| Codecov       | [![Coverage Status](https://img.shields.io/codecov/c/github/DoktorMike/datools/master.svg)](https://codecov.io/github/DoktorMike/datools?branch=master)                                |
-| Wercker       | [![wercker status](https://app.wercker.com/status/82dcdeafb5fae145580366ca3f95fc6d/s/master "wercker status")](https://app.wercker.com/project/byKey/82dcdeafb5fae145580366ca3f95fc6d) |
-| Lifecycle     | [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)                                                                |
-| Documentation | [![docs](https://img.shields.io/badge/docs-latest-blue.svg)](https://doktormike.github.io/datools)                                                                                     |
+[![Build Status](https://travis-ci.org/DoktorMike/datools.svg?branch=master)](https://travis-ci.org/DoktorMike/datools) [![Coverage Status](https://img.shields.io/codecov/c/github/DoktorMike/datools/master.svg)](https://codecov.io/github/DoktorMike/datools?branch=master) [![wercker status](https://app.wercker.com/status/82dcdeafb5fae145580366ca3f95fc6d/s/master "wercker status")](https://app.wercker.com/project/byKey/82dcdeafb5fae145580366ca3f95fc6d) [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing) [![docs](https://img.shields.io/badge/docs-latest-blue.svg)](https://doktormike.github.io/datools)
 
 Installation
 ------------
@@ -57,6 +51,8 @@ oneHotEncoder(x=wday(seq(as.Date("2017-10-07"), by ="days", length.out = 10),
 
 PCA fun
 -------
+
+If you ever need to illustrate for your peers what sort of direction your original data is pointing to in the PCA space this function comes very much in handy.
 
 ``` r
 library(datools)
