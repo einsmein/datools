@@ -63,4 +63,4 @@ data(iris)
 plotPCAComponent(iris[,-5], iris$Species) + theme_minimal()
 ```
 
-![](README-pcaplot-1.png)
+![](man/figures/pcaplot-1.png)
