@@ -18,4 +18,6 @@ Suggests: testthat, microbenchmark,
 VignetteBuilder: knitr
 Remotes: vqv/ggbiplot
 BugReports: https://github.com/DoktorMike/datools/issues
-URL: https://doktormike.github.io/datools
+URL: https://doktormike.github.io/datools, https://github.com/DoktorMike/datools
+
+
