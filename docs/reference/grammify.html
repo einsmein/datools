@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Normalize a vector of numbers — normalize • datools</title>
+<title>Create a Grammian Angular Field representation of a time series — grammify • datools</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,10 +30,12 @@
 
 
 
-<meta property="og:title" content="Normalize a vector of numbers — normalize" />
+<meta property="og:title" content="Create a Grammian Angular Field representation of a time series — grammify" />
 
-<meta property="og:description" content="This normalizes a vector of numbers. Normarlization rescales the original
-data into a range with 0 mean and unit variance." />
+<meta property="og:description" content="This function takes a univariate timeseries and turns it into a Grammian
+Angular Field which is a 2 dimensional representation of that time series.
+Typically this could be used by a convulutional neural network to infer
+properties of the problem and use it in predictive purposes." />
 
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -112,37 +114,44 @@ data into a range with 0 mean and unit variance." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Normalize a vector of numbers</h1>
-    <small class="dont-index">Source: <a href='https://github.com/DoktorMike/datools/blob/master/R/datascaling.R'><code>R/datascaling.R</code></a></small>
-    <div class="hidden name"><code>normalize.Rd</code></div>
+    <h1>Create a Grammian Angular Field representation of a time series</h1>
+    <small class="dont-index">Source: <a href='https://github.com/DoktorMike/datools/blob/master/R/timeseries.R'><code>R/timeseries.R</code></a></small>
+    <div class="hidden name"><code>grammify.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>This normalizes a vector of numbers. Normarlization rescales the original
-data into a range with 0 mean and unit variance.</p>
+    <p>This function takes a univariate timeseries and turns it into a Grammian
+Angular Field which is a 2 dimensional representation of that time series.
+Typically this could be used by a convulutional neural network to infer
+properties of the problem and use it in predictive purposes.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>normalize</span>(<span class='no'>x</span>)</pre>
+    <pre class="usage"><span class='fu'>grammify</span>(<span class='no'>x</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>the vector of numbers to normalize</p></td>
+      <td><p>the univariate timeseries to convert</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>the normalized vector of numbers</p>
+    <p>a matrix representing the Grammian Angular Field</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>normalize</span>(<span class='fu'>rnorm</span>(<span class='fl'>10</span>, <span class='fl'>20</span>, <span class='fl'>10</span>))</div><div class='output co'>#&gt;  [1] -1.13729968  1.30755738  0.36948147 -1.33230733 -0.89029943  0.82672631
-#&gt;  [7] -0.78021673 -0.08284622  1.36741165  0.35179258</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>datools</span>)
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>sin</span>(<span class='fl'>1</span>:<span class='fl'>100</span>)
+<span class='no'>xg</span> <span class='kw'>&lt;-</span> <span class='fu'>grammify</span>(<span class='no'>x</span>)
+<span class='fu'>image</span>(<span class='no'>xg</span>)</div><div class='img'><img src='grammify-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'>image</span>(<span class='fu'>grammify</span>(<span class='fu'>cos</span>(<span class='fl'>1</span>:<span class='fl'>100</span>)))</div><div class='img'><img src='grammify-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>image</span>(<span class='fu'>grammify</span>(<span class='fu'>sin</span>(<span class='fl'>1</span>:<span class='fl'>100</span>/<span class='fl'>10</span>)))</div><div class='img'><img src='grammify-3.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>image</span>(<span class='fu'>grammify</span>(<span class='fu'>tanh</span>(-<span class='fl'>50</span>:<span class='fl'>50</span>/<span class='fl'>20</span>)))</div><div class='img'><img src='grammify-4.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> (<span class='fu'>seq</span>(-<span class='fl'>100</span>, <span class='fl'>100</span>, <span class='kw'>length.out</span><span class='kw'>=</span><span class='fl'>100</span>)/<span class='fl'>10</span>)^<span class='fl'>2</span>+<span class='fu'>rnorm</span>(<span class='fl'>100</span>, <span class='fl'>0</span>, <span class='fl'>10</span>)
+<span class='fu'>image</span>(<span class='fu'>grammify</span>(<span class='no'>x</span>))</div><div class='img'><img src='grammify-5.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

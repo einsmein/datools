@@ -49,6 +49,8 @@ find_lag<-function(x,y, lag.max=as.integer(length(x)/2)) {
 #' image(xg)
 #'
 #' image(grammify(cos(1:100)))
+#' image(grammify(sin(1:100/10)))
+#' image(grammify(tanh(-50:50/20)))
 #'
 #' x <- (seq(-100, 100, length.out=100)/10)^2+rnorm(100, 0, 10)
 #' image(grammify(x))
