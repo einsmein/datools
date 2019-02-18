@@ -57,8 +57,8 @@ normalize <- function (x) {
 #' rangeToBuckets(1:nrow(mtcars), 9)
 #' rangeToBuckets(-2:3, 4)
 rangeToBuckets <- function(x, bucketsize=10){
-  if(length(x) < bucketsize) return(x)
-  if(bucketsize < 1) return(x)
+  if(length(x) < bucketsize) return(list(x))
+  if(bucketsize < 1) return(list(x))
   nbuckets <- length(x)%/%bucketsize
   remainder <- length(x)%%bucketsize
   inds <- list()

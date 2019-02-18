@@ -48,7 +48,7 @@ expect_lte(abs(find_lag(x, y)), 6)
 context("Range operations")
 expect_equal(rangeToBuckets(1:nrow(mtcars), 9),
              list(1:9, 10:18, 19:27, 28:32))
-expect_equal(rangeToBuckets(1:3, 5), 1:3)
+expect_equal(rangeToBuckets(1:3, 5), list(1:3))
 expect_equal(rangeToBuckets(1:3, 3), list(1:3))
 expect_equal(rangeToBuckets(1:3, 2), list(1:2, 3L))
 expect_equal(rangeToBuckets(-2:3, 4), list(-2:1, 2:3))
