@@ -55,3 +55,13 @@ data(iris)
 plotPCAComponent(iris[,-5], iris$Species) + theme_minimal()
 ```
 
+## Indices
+
+Splitting up a data.frame or a tibble into N buckets of size K is sometimes a hassle. The rangeToBuckets come to the rescue! In this example we'll split up the mtcars dataset and perform a simple regression on each subset of the data and show the results.
+
+```{r indecestest, echo=TRUE, message=FALSE, warning=FALSE, paged.print=FALSE}
+library(datools)
+indsList <- rangeToBuckets(1:nrow(mtcars), 10)
+sapply(indsList, function(x) coef(lm(mpg~disp, data=mtcars[x,])))
+```
+

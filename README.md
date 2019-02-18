@@ -61,3 +61,17 @@ plotPCAComponent(iris[,-5], iris$Species) + theme_minimal()
 ```
 
 ![](man/figures/pcaplot-1.png)
+
+Indices
+-------
+
+Splitting up a data.frame or a tibble into N buckets of size K is sometimes a hassle. The rangeToBuckets come to the rescue!
+
+``` r
+library(datools)
+indsList <- rangeToBuckets(1:nrow(mtcars), 10)
+sapply(indsList, function(x) coef(lm(mpg~disp, data=mtcars[x,])))
+#>                    [,1]        [,2]        [,3]        [,4]
+#> (Intercept) 25.56380288 33.09625946 29.13295921 25.70222222
+#> disp        -0.02489719 -0.05094025 -0.03830431 -0.03555556
+```
