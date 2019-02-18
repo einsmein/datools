@@ -39,3 +39,31 @@ standardize <- function (x, a=0, b=1) {
 normalize <- function (x) {
   (x - base::mean(x)) / stats::sd(x)
 }
+
+#' Split a vector of indices into buckets
+#'
+#' Splits any index vector into a list of index vectors where each vector is of
+#' length bucketsize exept for the last one which contains the remainder. The
+#' remainder is defined as length(x)%%bucketsize. It works with all kind of
+#' discrete ranges. Negative to positive.
+#'
+#' @param x the indices to split into buckets
+#' @param bucketsize the size each bucket should have
+#'
+#' @return a list of indices of length bucketsize
+#' @export
+#'
+#' @examples
+#' rangeToBuckets(1:nrow(mtcars), 9)
+#' rangeToBuckets(-2:3, 4)
+rangeToBuckets <- function(x, bucketsize=10){
+  if(length(x) < bucketsize) return(x)
+  if(bucketsize < 1) return(x)
+  nbuckets <- length(x)%/%bucketsize
+  remainder <- length(x)%%bucketsize
+  inds <- list()
+  for(i in 1:nbuckets) inds[[i]] <- x[((i-1)*bucketsize+1):(i*bucketsize)]
+  if(remainder > 0) inds[[nbuckets+1]] <- x[(nbuckets*bucketsize+1):length(x)]
+  inds
+}
+
