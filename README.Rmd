@@ -65,3 +65,14 @@ indsList <- rangeToBuckets(1:nrow(mtcars), 10)
 sapply(indsList, function(x) coef(lm(mpg~disp, data=mtcars[x,])))
 ```
 
+Of course we can make this nices by running more splits and making all of it in one go
+
+```{r indecesexample1, echo=TRUE, message=FALSE, warning=FALSE, paged.print=FALSE}
+library(datools)
+library(dplyr)
+sapply(rangeToBuckets(1:nrow(mtcars), 4), 
+       function(x) coef(lm(mpg~disp, data=mtcars[x,]))) %>% 
+  t() %>% knitr::kable()
+```
+
+
