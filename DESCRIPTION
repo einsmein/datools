@@ -3,16 +3,16 @@ Title: A set of useful tools for machine learning consulting using R
 Version: 0.1.0
 Authors@R: person("Michael", "Green", email = "micke.green@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0003-1507-1613"))
 Description: A set of useful tools for machine learning consulting and other data science oriented solutions using R.
-Depends: R (>= 3.4.1), stats
+Depends: R (>= 3.4), stats
 License: GPL-3 + file LICENSE
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1
 Imports: plotly,
     RColorBrewer, DBI, RSQLite, readr, dplyr, tidyr, lubridate, dbplyr, ggplot2, ISOweek, reshape2, timeDate, utils, tibble,
-    ggbiplot
+    ggbiplot, graphics
 Suggests: testthat, microbenchmark,
-    covr, MASS,
+    covr, MASS, bnlearn, Rgraphviz,
     knitr,
     rmarkdown
 VignetteBuilder: knitr

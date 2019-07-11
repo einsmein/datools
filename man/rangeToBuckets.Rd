@@ -17,8 +17,10 @@ a list of indices of length bucketsize
 \description{
 Splits any index vector into a list of index vectors where each vector is of
 length bucketsize exept for the last one which contains the remainder. The
-remainder is defined as length(x)%%bucketsize.
+remainder is defined as length(x)%%bucketsize. It works with all kind of
+discrete ranges. Negative to positive.
 }
 \examples{
 rangeToBuckets(1:nrow(mtcars), 9)
+rangeToBuckets(-2:3, 4)
 }
