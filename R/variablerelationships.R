@@ -61,3 +61,27 @@ discover_and_plot_variable_hierarchies<-function(data, n=6){
   #                           shape = "ellipse")
   bnlearn::arcs(nets[[myorder[1]]])
 }
+
+#' Find the relationship between the variables in a data set and fit that model
+#'
+#' Finds the hirarchical relationship between all variables and connects them in a network such as
+#' to optimize the mutual information. This just fits the network selected by HillClimbing using a
+#' Bayesian information criteria (BIC).
+#'
+#' @param data the data.frame containing the observations and variables to inspect
+#'
+#' @return a fitted architecture
+#' @export
+#'
+#' @examples
+#' data(mtcars)
+#' library(dplyr)
+#' myfit <- discover_hierarchy_and_fit(mtcars)
+#' bnlearn::graphviz.plot(myfit)
+discover_hierarchy_and_fit<-function(data){
+  stopifnot(inherits(data, c("tbl_df", "tbl", "data.frame")))
+  requireNamespace("bnlearn")
+  mystruct <- bnlearn::hc(data)
+  myfit <- bnlearn::bn.fit(mystruct, data)
+  return(myfit)
+}

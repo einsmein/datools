@@ -33,6 +33,14 @@ You can install datools from github with:
 devtools::install_github("DoktorMike/datools")
 ```
 
+Optionally you can also install the Rgraphviz package which is required for the graph learning visualization.
+
+```{r bnlearninstall,eval=FALSE}
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install("Rgraphviz")
+```
+
 ## Example
 
 Say you have a vector of weekdays and you would really like to have that one hot encoded for use in your algorithms then oneHotEncoder comes to the rescue!
@@ -75,4 +83,56 @@ sapply(rangeToBuckets(1:nrow(mtcars), 4),
   t() %>% knitr::kable()
 ```
 
+
+## Discovering relationships in your dataset
+
+Here we'll look at some ways to detect dependencies and hierarchies between your variables in a given dataset. As per usual we'll use a simple dataset that is available in R. The `mtcars` tadaaa! Let's pretend you were given this dataset and have no clue how to best go about things and you feel like exploring. So let's start by looking at the data.
+
+```{r}
+data(mtcars)
+sapply(mtcars, summary) %>% t()
+```
+
+So far so good. Now how do these guys relate to each other? Well we could go about this by fitting every single linear model we could given all variables. That still wouldn't give us the hierarchy between all variables though. So can we do better? Why yes, yes we can. 
+
+```{r fitmodel, message=FALSE, warning=FALSE, paged.print=FALSE}
+library(datools)
+library(Rgraphviz)
+library(bnlearn)
+data(mtcars)
+myfit<-discover_hierarchy_and_fit(mtcars)
+graphviz.plot(myfit)
+```
+
+So from this graph we can see that `qsec` is actually the last node in the hierarchy. Regression wise this node is affected by a lot of other variables but does not affect them in return. Notice here that we're only measuring correlation and graph factorization here. This is not a proper causality claim, but it might be indicative of it.
+
+We could have a look at a textual representation of this graph as well if we're not into visualizations.
+
+```{r}
+arcs(myfit)
+```
+
+Say now that we want to know from this fit which variables `carb` is affected by and by how much. In this case we simply look at
+
+```{r}
+myfit$carb$coefficients
+```
+
+This can also be confirmed by running
+
+```{r}
+coef(lm(carb~mpg+cyl+gear, data=mtcars))
+```
+
+in which you can see that the edges between each node is fitted with a maximum likelihood estimation. This is not the model you would have gotten even if you decided to model `carb` in a flat structure as evident from:
+
+```{r}
+coef(lm(carb~., data=mtcars))
+```
+
+You can also get more information about a particular part of the graph by looking at the local model inside the graph.
+
+```{r}
+myfit$qsec
+```
 
