@@ -44,8 +44,10 @@ discover_variable_hierarchies<-function(data, n=5){
 #' data(iris)
 #' data(mtcars)
 #' library(dplyr)
-#' discover_and_plot_variable_hierarchies(mtcars, 10) %>% as_tibble()
-#' discover_and_plot_variable_hierarchies(iris, 10) %>% as_tibble()
+#' if(requireNamespace("Rgraphviz")){
+#'   discover_and_plot_variable_hierarchies(mtcars, 10) %>% as_tibble()
+#'   discover_and_plot_variable_hierarchies(iris, 10) %>% as_tibble()
+#' }
 discover_and_plot_variable_hierarchies<-function(data, n=6){
   stopifnot(inherits(data, c("tbl_df", "tbl", "data.frame")))
   requireNamespace("bnlearn")
@@ -77,7 +79,7 @@ discover_and_plot_variable_hierarchies<-function(data, n=6){
 #' data(mtcars)
 #' library(dplyr)
 #' myfit <- discover_hierarchy_and_fit(mtcars)
-#' bnlearn::graphviz.plot(myfit)
+#' if(requireNamespace("Rgraphviz")) bnlearn::graphviz.plot(myfit)
 discover_hierarchy_and_fit<-function(data){
   stopifnot(inherits(data, c("tbl_df", "tbl", "data.frame")))
   requireNamespace("bnlearn")
