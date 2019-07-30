@@ -67,7 +67,7 @@ Bayesian information criteria (BIC)." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">datools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -141,167 +141,14 @@ Bayesian information criteria (BIC).</p>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a character matrix with columns from and to representing the variables that are related</p>
+    <p>a fitted architecture</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>iris</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>mtcars</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>mtcars</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>dplyr</span>)
-<span class='fu'>discover_hierarchy_and_fit</span>(<span class='no'>mtcars</span>)</div><div class='output co'>#&gt; 
-#&gt;   Bayesian network parameters
-#&gt; 
-#&gt;   Parameters of node mpg (Gaussian distribution)
-#&gt; 
-#&gt; Conditional density: mpg | cyl + wt
-#&gt; Coefficients:
-#&gt; (Intercept)          cyl           wt  
-#&gt;   39.686261    -1.507795    -3.190972  
-#&gt; Standard deviation of the residuals: 2.567516 
-#&gt; 
-#&gt;   Parameters of node cyl (Gaussian distribution)
-#&gt; 
-#&gt; Conditional density: cyl
-#&gt; Coefficients:
-#&gt; (Intercept)  
-#&gt;      6.1875  
-#&gt; Standard deviation of the residuals: 1.785922 
-#&gt; 
-#&gt;   Parameters of node disp (Gaussian distribution)
-#&gt; 
-#&gt; Conditional density: disp | cyl
-#&gt; Coefficients:
-#&gt; (Intercept)          cyl  
-#&gt;  -156.60898     62.59893  
-#&gt; Standard deviation of the residuals: 54.38465 
-#&gt; 
-#&gt;   Parameters of node hp (Gaussian distribution)
-#&gt; 
-#&gt; Conditional density: hp | disp + wt + carb
-#&gt; Coefficients:
-#&gt; (Intercept)         disp           wt         carb  
-#&gt;  53.1671484    0.5166322  -28.5921378   23.5769117  
-#&gt; Standard deviation of the residuals: 24.32226 
-#&gt; 
-#&gt;   Parameters of node drat (Gaussian distribution)
-#&gt; 
-#&gt; Conditional density: drat | cyl + am
-#&gt; Coefficients:
-#&gt; (Intercept)          cyl           am  
-#&gt;   4.2233574   -0.1348772    0.5114038  
-#&gt; Standard deviation of the residuals: 0.3244723 
-#&gt; 
-#&gt;   Parameters of node wt (Gaussian distribution)
-#&gt; 
-#&gt; Conditional density: wt | disp
-#&gt; Coefficients:
-#&gt; (Intercept)         disp  
-#&gt; 1.599814597  0.007010325  
-#&gt; Standard deviation of the residuals: 0.4574133 
-#&gt; 
-#&gt;   Parameters of node qsec (Gaussian distribution)
-#&gt; 
-#&gt; Conditional density: qsec | hp + wt + vs
-#&gt; Coefficients:
-#&gt; (Intercept)           hp           wt           vs  
-#&gt; 16.02638440  -0.01767224   1.08994453   2.07551571  
-#&gt; Standard deviation of the residuals: 0.8156723 
-#&gt; 
-#&gt;   Parameters of node vs (Gaussian distribution)
-#&gt; 
-#&gt; Conditional density: vs | cyl + am
-#&gt; Coefficients:
-#&gt; (Intercept)          cyl           am  
-#&gt;   2.3181613   -0.2806444   -0.3548896  
-#&gt; Standard deviation of the residuals: 0.2620353 
-#&gt; 
-#&gt;   Parameters of node am (Gaussian distribution)
-#&gt; 
-#&gt; Conditional density: am | wt
-#&gt; Coefficients:
-#&gt; (Intercept)           wt  
-#&gt;   1.5424435   -0.3531567  
-#&gt; Standard deviation of the residuals: 0.3659338 
-#&gt; 
-#&gt;   Parameters of node gear (Gaussian distribution)
-#&gt; 
-#&gt; Conditional density: gear | am
-#&gt; Coefficients:
-#&gt; (Intercept)           am  
-#&gt;    3.210526     1.174089  
-#&gt; Standard deviation of the residuals: 0.4558808 
-#&gt; 
-#&gt;   Parameters of node carb (Gaussian distribution)
-#&gt; 
-#&gt; Conditional density: carb | mpg + cyl + gear
-#&gt; Coefficients:
-#&gt; (Intercept)          mpg          cyl         gear  
-#&gt;  -2.7816679   -0.1439035    0.3959199    1.6367526  
-#&gt; Standard deviation of the residuals: 0.8807524 
-#&gt; </div><div class='input'><span class='fu'>discover_hierarchy_and_fit</span>(<span class='no'>iris</span>)</div><div class='output co'>#&gt; 
-#&gt;   Bayesian network parameters
-#&gt; 
-#&gt;   Parameters of node Sepal.Length (Gaussian distribution)
-#&gt; 
-#&gt; Conditional density: Sepal.Length | Sepal.Width + Petal.Length + Petal.Width
-#&gt; Coefficients:
-#&gt;  (Intercept)   Sepal.Width  Petal.Length   Petal.Width  
-#&gt;    1.8559975     0.6508372     0.7091320    -0.5564827  
-#&gt; Standard deviation of the residuals: 0.3145491 
-#&gt; 
-#&gt;   Parameters of node Sepal.Width (conditional Gaussian distribution)
-#&gt; 
-#&gt; Conditional density: Sepal.Width | Petal.Width + Species
-#&gt; Coefficients:
-#&gt;                      0          1          2
-#&gt; (Intercept)  3.2220507  1.3728630  1.6947730
-#&gt; Petal.Width  0.8371922  1.0536478  0.6314052
-#&gt; Standard deviation of the residuals:
-#&gt;         0          1          2  
-#&gt; 0.3724741  0.2370691  0.2747206  
-#&gt; Discrete parents' configurations:
-#&gt;       Species
-#&gt; 0      setosa
-#&gt; 1  versicolor
-#&gt; 2   virginica
-#&gt; 
-#&gt;   Parameters of node Petal.Length (conditional Gaussian distribution)
-#&gt; 
-#&gt; Conditional density: Petal.Length | Species
-#&gt; Coefficients:
-#&gt;                  0      1      2
-#&gt; (Intercept)  1.462  4.260  5.552
-#&gt; Standard deviation of the residuals:
-#&gt;         0          1          2  
-#&gt; 0.1736640  0.4699110  0.5518947  
-#&gt; Discrete parents' configurations:
-#&gt;       Species
-#&gt; 0      setosa
-#&gt; 1  versicolor
-#&gt; 2   virginica
-#&gt; 
-#&gt;   Parameters of node Petal.Width (conditional Gaussian distribution)
-#&gt; 
-#&gt; Conditional density: Petal.Width | Petal.Length + Species
-#&gt; Coefficients:
-#&gt;                         0            1            2
-#&gt; (Intercept)   -0.04822033  -0.08428835   1.13603130
-#&gt; Petal.Length   0.20124509   0.33105360   0.16029696
-#&gt; Standard deviation of the residuals:
-#&gt;         0          1          2  
-#&gt; 0.1004521  0.1233530  0.2627065  
-#&gt; Discrete parents' configurations:
-#&gt;       Species
-#&gt; 0      setosa
-#&gt; 1  versicolor
-#&gt; 2   virginica
-#&gt; 
-#&gt;   Parameters of node Species (multinomial distribution)
-#&gt; 
-#&gt; Conditional probability table:
-#&gt;      setosa versicolor  virginica 
-#&gt;  0.3333333  0.3333333  0.3333333 
-#&gt; </div></pre>
+<span class='no'>myfit</span> <span class='kw'>&lt;-</span> <span class='fu'>discover_hierarchy_and_fit</span>(<span class='no'>mtcars</span>)
+<span class='kw pkg'>bnlearn</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/bnlearn/topics/graphviz.plot'>graphviz.plot</a></span>(<span class='no'>myfit</span>)</div><div class='img'><img src='discover_hierarchy_and_fit-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
