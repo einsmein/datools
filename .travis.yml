@@ -4,5 +4,6 @@ language: R
 warnings_are_errors: false
 sudo: false
 cache: packages
+bioc_packages: Rgraphviz
 after_success:
   - Rscript -e 'covr::codecov()'
