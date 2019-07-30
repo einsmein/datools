@@ -21,5 +21,5 @@ Bayesian information criteria (BIC).
 data(mtcars)
 library(dplyr)
 myfit <- discover_hierarchy_and_fit(mtcars)
-bnlearn::graphviz.plot(myfit)
+if(requireNamespace("Rgraphviz")) bnlearn::graphviz.plot(myfit)
 }
