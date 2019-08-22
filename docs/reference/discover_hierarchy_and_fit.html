@@ -148,7 +148,7 @@ Bayesian information criteria (BIC).</p>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>mtcars</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>dplyr</span>)
 <span class='no'>myfit</span> <span class='kw'>&lt;-</span> <span class='fu'>discover_hierarchy_and_fit</span>(<span class='no'>mtcars</span>)
-<span class='kw pkg'>bnlearn</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/bnlearn/topics/graphviz.plot'>graphviz.plot</a></span>(<span class='no'>myfit</span>)</div><div class='img'><img src='discover_hierarchy_and_fit-1.png' alt='' width='700' height='433' /></div></pre>
+<span class='kw'>if</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/ns-load'>requireNamespace</a></span>(<span class='st'>"Rgraphviz"</span>)) <span class='kw pkg'>bnlearn</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/bnlearn/topics/graphviz.plot'>graphviz.plot</a></span>(<span class='no'>myfit</span>)</div><div class='img'><img src='discover_hierarchy_and_fit-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

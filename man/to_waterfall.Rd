@@ -13,7 +13,9 @@ to_waterfall(data)
 a new data tibble with columns necessary to create a waterfall visualization
 }
 \description{
-Make waterfall data tibble from a tibble of cash flows
+The only requirement for this function to work is that the first row and last row of the tibble
+represent the cash in and cash out. In other words the Base and the Total when talking about
+sales modeling.
 }
 \examples{
 datadf <-
@@ -32,4 +34,8 @@ tibble::tibble(
   amount = c(1200, -2300, 11000, -9000, -1900, -1200, -3000, 7000, 1800)
 )
 to_waterfall(datadf)
+# Change order
+datadf2 <- to_waterfall(datadf)
+firstindex <- which(datadf$desc == "sales")
+datadf2[c(firstindex, setdiff(seq_along(datadf$amount), firstindex) ),]
 }

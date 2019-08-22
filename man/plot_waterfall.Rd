@@ -13,7 +13,9 @@ plot_waterfall(data)
 a ggplot of the waterfall plot
 }
 \description{
-Make a waterfall plot from a tibble of cash flows
+The only requirement for this function to work is that the first row and last row of the tibble
+represent the cash in and cash out. In other words the Base and the Total when talking about
+sales modeling.
 }
 \examples{
 datadf <-
