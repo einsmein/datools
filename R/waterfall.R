@@ -57,12 +57,13 @@ to_waterfall <- function (data) {
 #' sales modeling.
 #'
 #' @param data the data tibble to operate on
-#' @importFrom ggplot2 aes element_text geom_rect theme theme_minimal xlab ylab
+#' @importFrom ggplot2 aes element_text geom_rect theme theme_minimal xlab ylab scale_fill_brewer
 #'
 #' @return a ggplot of the waterfall plot
 #' @export
 #'
 #' @examples
+#' library(ggplot2)
 #' datadf <-
 #' tibble::tibble(
 #'   desc = c(

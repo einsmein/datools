@@ -18,6 +18,7 @@ represent the cash in and cash out. In other words the Base and the Total when t
 sales modeling.
 }
 \examples{
+library(ggplot2)
 datadf <-
 tibble::tibble(
   desc = c(
