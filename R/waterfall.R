@@ -78,7 +78,9 @@ to_waterfall <- function (data) {
 #'   ),
 #'   amount = c(1200, -2300, 11000, -9000, -1900, -1200, -3000, 7000, 1800)
 #' )
-#' plot_waterfall(datadf)
+#' plot_waterfall(datadf) +
+#'   scale_fill_brewer(type="seq", palette = 4) +
+#'   theme(axis.text.x = element_text(angle = 90, vjust = 0.9, hjust=1))
 plot_waterfall <- function(data) {
   desc<-amount<-end<-id<-type<-start<-NULL
   to_waterfall(data) %>% ggplot(aes(desc, fill = type)) +
