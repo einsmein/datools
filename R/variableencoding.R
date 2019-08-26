@@ -49,3 +49,39 @@ oneHotEncoder2 <- function(x, f = function(y) y){
   tibble(Category=f(x), Data = seq_along(x), Value=1) %>%
     tidyr::spread(Category, Value, fill = 0) %>% mutate(Data=x)
 }
+
+#' Lag variables in data nlags
+#'
+#' This function uses an existing dataset in the shape of a tibble and then
+#' lags each variable(column) in the tibble from 1 all the way up to nlag.
+#'
+#' This function requires that the first column in your tibble is called
+#' "date" and represents some kind of time epoch.
+#'
+#' @importFrom tibble tibble
+#' @importFrom stats embed setNames
+#' @param x the data tibble to operate on
+#' @param nlag the max number of lags to create for each variable
+#'
+#' @return a new tibble with the data lagged
+#' @export
+#'
+#' @examples
+#' library(dplyr)
+#' tmpdf <- tibble(date=seq(from=as.Date("2018-01-01"), length.out=10, by="1 day"),
+#'                 a=1:10, b=11:20, d=21:30)
+#' tmpdf %>% lagvariables(4)
+lagvariables <- function(x, nlag=5){
+  stopifnot('date' %in% colnames(x))
+  tmpdf <- x
+  tibblify <- function(x) data.frame(x) %>% tibble::rownames_to_column("date") %>% dplyr::as_tibble()
+  namify <- function(x) lapply(names(x), function(name) stats::setNames(x[[name]], c("date", paste0(name, "_", names(x[[name]])[-1]))))
+  embedAndRename <- function(x){
+    a <- stats::embed(x, nlag)
+    colnames(a) <- paste0('l', 0:(nlag-1))
+    rownames(a) <- as.character(tmpdf$date[nlag:nrow(tmpdf)])
+    a %>% tibblify()
+  }
+  tmplist <- dplyr::select(tmpdf, -date) %>% lapply(embedAndRename) %>% namify()
+  Reduce(function(x, y) dplyr::inner_join(x, y, by="date"), tmplist)
+}
