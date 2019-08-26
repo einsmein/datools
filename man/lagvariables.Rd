@@ -20,11 +20,15 @@ lags each variable(column) in the tibble from 1 all the way up to nlag.
 }
 \details{
 This function requires that the first column in your tibble is called
-"date" and represents some kind of time epoch.
+"date" and represents some kind of time epoch. Note also that you will
+get no NA's returned. This means that the returned data will start nlag-1
+days later than the input data.
 }
 \examples{
 library(dplyr)
 tmpdf <- tibble(date=seq(from=as.Date("2018-01-01"), length.out=10, by="1 day"),
                 a=1:10, b=11:20, d=21:30)
-tmpdf \%>\% lagvariables(4)
+lagdf <- tmpdf \%>\% lagvariables(4)
+lagdf
+tmpdf
 }

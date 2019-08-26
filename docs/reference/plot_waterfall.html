@@ -145,7 +145,8 @@ sales modeling.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>datadf</span> <span class='kw'>&lt;-</span>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>ggplot2</span>)
+<span class='no'>datadf</span> <span class='kw'>&lt;-</span>
 <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span>(
   <span class='kw'>desc</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(
     <span class='st'>'starting_net_income'</span>,
@@ -160,7 +161,9 @@ sales modeling.</p>
   ),
   <span class='kw'>amount</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1200</span>, -<span class='fl'>2300</span>, <span class='fl'>11000</span>, -<span class='fl'>9000</span>, -<span class='fl'>1900</span>, -<span class='fl'>1200</span>, -<span class='fl'>3000</span>, <span class='fl'>7000</span>, <span class='fl'>1800</span>)
 )
-<span class='fu'>plot_waterfall</span>(<span class='no'>datadf</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown aesthetics: x</span></div><div class='img'><img src='plot_waterfall-1.png' alt='' width='700' height='433' /></div></pre>
+<span class='fu'>plot_waterfall</span>(<span class='no'>datadf</span>) +
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_brewer.html'>scale_fill_brewer</a></span>(<span class='kw'>type</span><span class='kw'>=</span><span class='st'>"seq"</span>, <span class='kw'>palette</span> <span class='kw'>=</span> <span class='fl'>4</span>) +
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></span>(<span class='kw'>axis.text.x</span> <span class='kw'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_text</a></span>(<span class='kw'>angle</span> <span class='kw'>=</span> <span class='fl'>90</span>, <span class='kw'>vjust</span> <span class='kw'>=</span> <span class='fl'>0.9</span>, <span class='kw'>hjust</span><span class='kw'>=</span><span class='fl'>1</span>))</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown aesthetics: x</span></div><div class='img'><img src='plot_waterfall-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
