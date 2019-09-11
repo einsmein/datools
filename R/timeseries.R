@@ -58,3 +58,39 @@ grammify <- function(x) {
   theta <- acos(standardize(x, -1, 1))
   outer(theta, theta, FUN=function(x, y) cos(x+y))
 }
+
+#' Plot prediction based on a time series
+#'
+#' This plots estmated value vs observed for a given time series.
+#' It also visualized upper and lower level for that estimate.
+#'
+#' @param preddf the prediction data to plot
+#' @importFrom ggplot2 geom_point geom_line geom_ribbon
+#' @importFrom dplyr "%>%"
+#'
+#' @return a ggplot object
+#' @export
+#'
+#' @examples
+#' library(ggplot2)
+#' library(dplyr)
+#' data(economics)
+#' myfit <- lm(unemploy~pop+psavert, data=economics)
+#' preddf <- predict(myfit, interval="predict") %>% as_tibble()
+#' preddf <- preddf %>% transmute(date=as.Date(economics$date),
+#'                                observed=economics$unemploy,
+#'                                estimate=fit,
+#'                                lower=lwr,
+#'                                upper=upr)
+#' plotPrediction(preddf)
+plotPrediction <- function(preddf){
+  stopifnot(colnames(preddf) %in% c("date", "observed", "estimate", "lower", "upper"))
+  estimate<-observed<-lower<-upper<-NULL
+  ggplot(data=preddf, aes(x=date, y=estimate)) +
+    ggplot2::geom_point() +
+    ggplot2::geom_point(aes(y=observed), color="red") +
+    ggplot2::geom_line() +
+    ggplot2::geom_line(aes(y=observed), color="red") +
+    ggplot2::geom_ribbon(aes(ymax = upper, ymin = lower), alpha=0.5) +
+    ggplot2::theme_minimal() + ylab("Observed") + xlab("")
+}
