@@ -8,6 +8,9 @@ PKGVERS = `sed -n "s/Version: *\([^ ]*\)/\1/p" DESCRIPTION`
 
 all: check
 
+docs: build
+	Rscript -e 'pkgdown::build_site()'
+
 build:
 	R CMD build .
 
