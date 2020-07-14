@@ -3,7 +3,6 @@
 \docType{package}
 \name{datools}
 \alias{datools}
-\alias{datools-package}
 \title{datools: A set of useful tools for machine learning consulting using R.}
 \description{
 The datools package provides a set of useful tools for machine learning

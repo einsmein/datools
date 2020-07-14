@@ -87,3 +87,72 @@ discover_hierarchy_and_fit<-function(data){
   myfit <- bnlearn::bn.fit(mystruct, data)
   return(myfit)
 }
+
+
+#' Evolve a hierarchy among variables by hill climbing
+#'
+#' This method starts by evolving a graph relationship between all variables and
+#' afterwards fits that graph to your dataset. It can operate with whitelists
+#' and blacklists to enforce and forbid relationships respectively. The scores
+#' in the plot are standardized between 0 and 100. The sign of the strength is
+#' highlighted by color.
+#'
+#' @param data the dataset to discover the relationship on. Should be given as a
+#' data.frame or tibble.
+#' @param blacklist the relationships to forbid in the graph. This defaults to
+#' NULL which means we forbid nothing.
+#' @param whitelist the relationships to enforce in the graph. This defaults to
+#' NULL which means we enforce nothing.
+#' @param signcolor a boolean for whether you want the sign to be colored in the
+#' Plot
+#' @param ... arguments passed to the hillclimbing algorithm in bnlearn.
+#' @return  a Ragraph S4 object
+#' @importFrom methods new
+#' @export
+#' @examples
+#' data(mtcars)
+#' library(Rgraphviz)
+#' library(bnlearn)
+#' evolve_hierarchy_and_plot(mtcars)
+#' blacklist <- data.frame(from=c("cyl", "cyl", "cyl"), to=c("drat", "vs", "mpg"))
+#' evolve_hierarchy_and_plot(mtcars, blacklist=blacklist)
+evolve_hierarchy_and_plot<-function(data, blacklist=NULL, whitelist=NULL, signcolor=TRUE, ...) {
+    mygraph <- bnlearn::hc(data, whitelist=whitelist, blacklist=blacklist, ...)
+    mybnfit <- bnlearn::bn.fit(mygraph, data=data)
+    # Plot it
+    myarcs <- bnlearn::arcs(mygraph)
+    myarcs <- myarcs %>% dplyr::as_tibble()
+    nAttrs <- list()
+    eAttrs <- list()
+    attrs <- list(node=list(fontsize=40,
+                            fillcolor="#DBE0DE",
+                            fontcolor="black"),
+                  edge=list(fontsize=40,
+                            color="#009FE3"),
+                  graph=list(rankdir="LR"))
+    rEG <- new("graphNEL", nodes=unique(c(myarcs[["from"]], myarcs[["to"]])),
+               edgemode="directed")
+    strengths <- sapply(1:nrow(myarcs), function(x) check_sign(mybnfit, myarcs$from[x], myarcs$to[x]))
+    strengths <- round(standardize(abs(strengths))*100, 1)
+    rEG <- graph::addEdge(myarcs$from, myarcs$to, rEG, strengths)
+    ew <- as.character(unlist(graph::edgeWeights(rEG)))
+    ew <- ew[setdiff(seq(along=ew), Rgraphviz::removedEdges(rEG))]
+    names(ew) <- graph::edgeNames(rEG)
+    eAttrs$label <- ew
+    encodecolor <- function(x){
+        from <- myarcs$from[x]
+        to <- myarcs$to[x]
+        val <- check_sign(mybnfit, from, to)
+        myname <- paste0(from, "~", to)
+        if(val >0) ret <- "green"
+        else ret <- "red"
+        names(ret) <- myname
+        ret
+    }
+    #ec <- c("Buzz~Attention"="green")
+    ec <- sapply(1:nrow(myarcs), encodecolor)
+    if(signcolor) eAttrs$color <- ec
+    Rgraphviz::plot(rEG, edgeAttrs=eAttrs, nodeAttrs=nAttrs, attrs=attrs)
+}
+
+check_sign <- function(bnfit, from, to) coef(bnfit[[to]])[[from]]

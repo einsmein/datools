@@ -4,8 +4,14 @@
 \alias{csvToSQLite}
 \title{Save a single CSV-table into a single table sqlite database}
 \usage{
-csvToSQLite(csv_file, sqlite_file, table_name, pre_process_size = 1000,
-  chunk_size = 50000, delim = ",")
+csvToSQLite(
+  csv_file,
+  sqlite_file,
+  table_name,
+  pre_process_size = 1000,
+  chunk_size = 50000,
+  delim = ","
+)
 }
 \arguments{
 \item{csv_file}{name of the CSV file to convert}

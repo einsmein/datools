@@ -4,8 +4,10 @@
 \alias{genHolidays}
 \title{Generate public holidays for all markets}
 \usage{
-genHolidays(years = (lubridate::year(Sys.Date()) -
-  2):lubridate::year(Sys.Date()), country)
+genHolidays(
+  years = (lubridate::year(Sys.Date()) - 2):lubridate::year(Sys.Date()),
+  country
+)
 }
 \arguments{
 \item{years}{the years for which to generate the holidays given as 2013:2017
