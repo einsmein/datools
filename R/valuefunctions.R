@@ -9,8 +9,7 @@
 #'
 #' @examples
 #' naToZero(c(NA, 3:5, NA, NA, 4, 4, 10, NA))
-naToZero <- function (x)
-{
+naToZero <- function(x) {
   x[is.na(x)] <- 0
   return(x)
 }
@@ -28,8 +27,7 @@ naToZero <- function (x)
 #' @examples
 #' naToZero(c(NA, 3:5, NA, NA, 4, 4, 10, NA))
 #' naToVal(c(NA, 3:5, NA, NA, 4, 4, 10, NA), 0)
-naToVal <- function (x, y=0)
-{
+naToVal <- function(x, y = 0) {
   x[is.na(x)] <- y
   return(x)
 }
@@ -48,7 +46,7 @@ naToVal <- function (x, y=0)
 #' @examples
 #' nonFinToVal(c(NA, 3:5, NA, NA, 4, 4, 10, NA))
 #' nonFinToVal(c(NA, 3:5, NA, NA, 4, 4, 10, NA), 3)
-nonFinToVal<-function(x, y=0){
-  x[!is.finite(x)]<-y
+nonFinToVal <- function(x, y = 0) {
+  x[!is.finite(x)] <- y
   return(x)
 }

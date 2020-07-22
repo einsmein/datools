@@ -8,7 +8,7 @@
 #' @export
 #' @examples
 #' dateToIsoWeek(c("2017-11-23", "2015-11-23"))
-dateToIsoWeek <- function (dates) gsub("-W|-\\d", "", ISOweek::date2ISOweek(dates))
+dateToIsoWeek <- function(dates) gsub("-W|-\\d", "", ISOweek::date2ISOweek(dates))
 
 #' Generate public holidays for all markets
 #'
@@ -26,23 +26,28 @@ dateToIsoWeek <- function (dates) gsub("-W|-\\d", "", ISOweek::date2ISOweek(date
 #' @export
 #'
 #' @examples
-#' b<-genHolidays(2016:2017)
+#' b <- genHolidays(2016:2017)
 #' b[1:10, 1:5]
-genHolidays<-function(years=(lubridate::year(Sys.Date())-2):lubridate::year(Sys.Date()), country) {
+genHolidays <- function(years = (lubridate::year(Sys.Date()) - 2):lubridate::year(Sys.Date()), country) {
   # a<-sapply(timeDate::listHolidays(), FUN=function(x) as.character(as.Date(eval(call(x, years)))))
-  a<-sapply(timeDate::listHolidays(), FUN=function(x) as.character(as.Date(eval(as.call(list(utils::getFromNamespace(x, "timeDate"), years))))))
-  tmpdf <- tibble(Date=as.character(seq(from = as.Date(paste0(min(years), "-01-01")),
-                                        to = as.Date(paste0(max(years), "-12-31")),
-                                        by = "1 day")))
-  toInd <- function(x){
-    dplyr::left_join(tmpdf, tibble(Date=x, Val=1))
+  a <- sapply(timeDate::listHolidays(), FUN = function(x) as.character(as.Date(eval(as.call(list(utils::getFromNamespace(x, "timeDate"), years))))))
+  tmpdf <- tibble(Date = as.character(seq(
+    from = as.Date(paste0(min(years), "-01-01")),
+    to = as.Date(paste0(max(years), "-12-31")),
+    by = "1 day"
+  )))
+  toInd <- function(x) {
+    dplyr::left_join(tmpdf, tibble(Date = x, Val = 1))
   }
 
-  b<-lapply(seq_along(a), FUN = function(x) toInd(a[[x]]) %>% stats::setNames(c("Date", names(a)[x])))
-  b<-Reduce(dplyr::inner_join, b)
-  b<-dplyr::mutate_all(b, naToZero)
-  countries<-c("CA", "CH", "DE", "FR", "GB", "IT", "JP", "US")
-  if(missing(country)) b <- dplyr::select(b, -dplyr::matches(paste0(countries, collapse = '|')))
-  else b <- dplyr::select(b, -dplyr::matches(paste0(setdiff(countries, country), collapse = '|')))
+  b <- lapply(seq_along(a), FUN = function(x) toInd(a[[x]]) %>% stats::setNames(c("Date", names(a)[x])))
+  b <- Reduce(dplyr::inner_join, b)
+  b <- dplyr::mutate_all(b, naToZero)
+  countries <- c("CA", "CH", "DE", "FR", "GB", "IT", "JP", "US")
+  if (missing(country)) {
+    b <- dplyr::select(b, -dplyr::matches(paste0(countries, collapse = "|")))
+  } else {
+    b <- dplyr::select(b, -dplyr::matches(paste0(setdiff(countries, country), collapse = "|")))
+  }
   b
 }

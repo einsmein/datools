@@ -12,37 +12,37 @@
 #'
 #' @examples
 #' datadf <-
-#' tibble::tibble(
-#'   desc = c(
-#'     'starting_net_income',
-#'     'write_offs',
-#'     'sales',
-#'     'COGS',
-#'     'overhead',
-#'     'taxes',
-#'     'bonuses',
-#'     'other_income',
-#'     'ending_net_income'
-#'   ),
-#'   amount = c(1200, -2300, 11000, -9000, -1900, -1200, -3000, 7000, 1800)
-#' )
+#'   tibble::tibble(
+#'     desc = c(
+#'       "starting_net_income",
+#'       "write_offs",
+#'       "sales",
+#'       "COGS",
+#'       "overhead",
+#'       "taxes",
+#'       "bonuses",
+#'       "other_income",
+#'       "ending_net_income"
+#'     ),
+#'     amount = c(1200, -2300, 11000, -9000, -1900, -1200, -3000, 7000, 1800)
+#'   )
 #' to_waterfall(datadf)
 #' # Change order
 #' datadf2 <- to_waterfall(datadf)
 #' firstindex <- which(datadf$desc == "sales")
-#' datadf2[c(firstindex, setdiff(seq_along(datadf$amount), firstindex) ),]
-to_waterfall <- function (data) {
-  desc<-amount<-end<-id<-type<-start<-NULL
+#' datadf2[c(firstindex, setdiff(seq_along(datadf$amount), firstindex)), ]
+to_waterfall <- function(data) {
+  desc <- amount <- end <- id <- type <- start <- NULL
   datadf <- data %>%
     mutate(
-      desc = factor(desc, levels=desc),
+      desc = factor(desc, levels = desc),
       # desc = as.factor(desc),
       id = seq_along(amount),
-      type = ifelse(amount > 0, 'in', 'out'),
+      type = ifelse(amount > 0, "in", "out"),
       end = cumsum(amount),
       start = dplyr::lag(end)
     )
-  datadf[c(1, nrow(datadf)), "type"] <- 'net'
+  datadf[c(1, nrow(datadf)), "type"] <- "net"
   datadf[1, "start"] <- 0
   datadf[nrow(datadf), "end"] <- 0
   datadf <-
@@ -65,25 +65,25 @@ to_waterfall <- function (data) {
 #' @examples
 #' library(ggplot2)
 #' datadf <-
-#' tibble::tibble(
-#'   desc = c(
-#'     'starting_net_income',
-#'     'write_offs',
-#'     'sales',
-#'     'COGS',
-#'     'overhead',
-#'     'taxes',
-#'     'bonuses',
-#'     'other_income',
-#'     'ending_net_income'
-#'   ),
-#'   amount = c(1200, -2300, 11000, -9000, -1900, -1200, -3000, 7000, 1800)
-#' )
+#'   tibble::tibble(
+#'     desc = c(
+#'       "starting_net_income",
+#'       "write_offs",
+#'       "sales",
+#'       "COGS",
+#'       "overhead",
+#'       "taxes",
+#'       "bonuses",
+#'       "other_income",
+#'       "ending_net_income"
+#'     ),
+#'     amount = c(1200, -2300, 11000, -9000, -1900, -1200, -3000, 7000, 1800)
+#'   )
 #' plot_waterfall(datadf) +
-#'   scale_fill_brewer(type="seq", palette = 4) +
-#'   theme(axis.text.x = element_text(angle = 90, vjust = 0.9, hjust=1))
+#'   scale_fill_brewer(type = "seq", palette = 4) +
+#'   theme(axis.text.x = element_text(angle = 90, vjust = 0.9, hjust = 1))
 plot_waterfall <- function(data) {
-  desc<-amount<-end<-id<-type<-start<-NULL
+  desc <- amount <- end <- id <- type <- start <- NULL
   to_waterfall(data) %>% ggplot(aes(desc, fill = type)) +
     geom_rect(aes(
       x = desc,
@@ -91,8 +91,10 @@ plot_waterfall <- function(data) {
       xmax = id + 0.45,
       ymin = end,
       ymax = start
-    )) + theme_minimal() +
-    xlab("") + ylab("Value") +
-    theme(axis.text.x = element_text(angle = 45, vjust = 0.9, hjust=1))
+    )) +
+    theme_minimal() +
+    xlab("") +
+    ylab("Value") +
+    theme(axis.text.x = element_text(angle = 45, vjust = 0.9, hjust = 1))
 }
 #

@@ -16,18 +16,17 @@
 #' print(object.size(mylm))
 #' print(predict(mylm, cars))
 stripGlmModel <- function(a) {
-    # Make the GLM object more lightweight while still keeping predictive abilities summary and all 
-    # other things are broken though...
-    a$y <- NULL
-    a$data <- NULL
-    a$qr$qr <- NULL
-    a$weights <- NULL
-    a$effects <- NULL
-    a$residuals <- NULL
-    a$na.action <- NULL
-    a$fitted.values <- NULL
-    a$prior.weights <- NULL
-    a$linear.predictors <- NULL
-    a
+  # Make the GLM object more lightweight while still keeping predictive abilities summary and all
+  # other things are broken though...
+  a$y <- NULL
+  a$data <- NULL
+  a$qr$qr <- NULL
+  a$weights <- NULL
+  a$effects <- NULL
+  a$residuals <- NULL
+  a$na.action <- NULL
+  a$fitted.values <- NULL
+  a$prior.weights <- NULL
+  a$linear.predictors <- NULL
+  a
 }
-

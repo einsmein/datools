@@ -48,9 +48,9 @@ library(datools)
 library(lubridate)
 #> 
 #> Attaching package: 'lubridate'
-#> The following object is masked from 'package:base':
+#> The following objects are masked from 'package:base':
 #> 
-#>     date
+#>     date, intersect, setdiff, union
 oneHotEncoder(x=wday(seq(as.Date("2017-10-07"), by ="days", length.out = 10), 
                      label = TRUE))
 #>    Data Sun Mon Tue Wed Thu Fri Sat
@@ -237,3 +237,10 @@ myfit$qsec
 #> 16.02638440  -0.01767224   1.08994453   2.07551571  
 #> Standard deviation of the residuals: 0.8156723
 ```
+
+## Code of Conduct
+
+Please note that the datools project is released with a [Contributor
+Code of
+Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html).
+By contributing to this project, you agree to abide by its terms.

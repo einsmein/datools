@@ -12,12 +12,13 @@
 #'
 #' @examples
 #' library(datools)
-#' plotPCAComponent(iris[,-5], iris$Species) + theme_minimal()
-plotPCAComponent <- function(mytibble, classes=NULL) {
+#' plotPCAComponent(iris[, -5], iris$Species) + theme_minimal()
+plotPCAComponent <- function(mytibble, classes = NULL) {
   mypca <- stats::prcomp(mytibble, center = TRUE, scale. = TRUE)
-  if(all(!missing(classes), length(classes)==nrow(mytibble)))
+  if (all(!missing(classes), length(classes) == nrow(mytibble))) {
     ret <- ggbiplot::ggbiplot(mypca, groups = classes, circle = TRUE, ellipse = TRUE)
-  else
+  } else {
     ret <- ggbiplot::ggbiplot(mypca, circle = TRUE)
+  }
   ret
 }

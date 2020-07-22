@@ -25,12 +25,22 @@
 #' @export
 #'
 #' @examples
-#' tmpdf <- structure(list(Task = c("Task 1", "Task 2", "Task 3", "Task 4",
-#' "Task 5", "Task 6", "Task 7", "Task 8"), Start = structure(c(16801,
-#' 16851, 16801, 16901, 16961, 16901, 17051, 17131), class = "Date"),
-#' Duration = c(50L, 25L, 100L, 60L, 30L, 150L, 80L, 10L), Resource = c("A",
-#' "B", "C", "C", "C", "A", "B", "B")), .Names = c("Task", "Start",
-#' "Duration", "Resource"), row.names = c(NA, -8L), class = "data.frame")
+#' tmpdf <- structure(list(
+#'   Task = c(
+#'     "Task 1", "Task 2", "Task 3", "Task 4",
+#'     "Task 5", "Task 6", "Task 7", "Task 8"
+#'   ), Start = structure(c(
+#'     16801,
+#'     16851, 16801, 16901, 16961, 16901, 17051, 17131
+#'   ), class = "Date"),
+#'   Duration = c(50L, 25L, 100L, 60L, 30L, 150L, 80L, 10L), Resource = c(
+#'     "A",
+#'     "B", "C", "C", "C", "A", "B", "B"
+#'   )
+#' ), .Names = c(
+#'   "Task", "Start",
+#'   "Duration", "Resource"
+#' ), row.names = c(NA, -8L), class = "data.frame")
 #' plotGantt(tmpdf, "Sample Client")
 plotGantt <- function(mydf, client, brewerpalname = "Set3") {
   # Choose colors based on number of resources
@@ -45,45 +55,57 @@ plotGantt <- function(mydf, client, brewerpalname = "Set3") {
   # x-axis ticks are dates and handled automatically
 
   for (i in 1:(nrow(mydf) - 1)) {
-    p <- plotly::add_trace(p, x = c(mydf$Start[i], mydf$Start[i] + mydf$Duration[i]),
-                   y = c(i, i), mode = "lines",
-                   line = list(color = mydf$color[i], width = 20), showlegend = F,
-                   hoverinfo = "text",
+    p <- plotly::add_trace(p,
+      x = c(mydf$Start[i], mydf$Start[i] + mydf$Duration[i]),
+      y = c(i, i), mode = "lines",
+      line = list(color = mydf$color[i], width = 20), showlegend = F,
+      hoverinfo = "text",
 
-                   text = paste("Task: ", mydf$Task[i],"\n",
-                                "Duration: ", mydf$Duration[i], "days\n",
-                                "Resource: ", mydf$Resource[i]),
-                   evaluate = T  # needed to avoid lazy loading
+      text = paste(
+        "Task: ", mydf$Task[i], "\n",
+        "Duration: ", mydf$Duration[i], "days\n",
+        "Resource: ", mydf$Resource[i]
+      ),
+      evaluate = T # needed to avoid lazy loading
     )
   }
 
   p <- plotly::layout(p,
-                      xaxis = list(showgrid = F, tickfont = list(color = "#e6e6e6")),
-                      yaxis = list(showgrid = F, tickfont = list(color = "#e6e6e6"),
-                                   tickmode = "array", tickvals = 1:nrow(mydf),
-                                   ticktext = unique(mydf$Task), domain = c(0, 0.9)),
+    xaxis = list(showgrid = F, tickfont = list(color = "#e6e6e6")),
+    yaxis = list(
+      showgrid = F, tickfont = list(color = "#e6e6e6"),
+      tickmode = "array", tickvals = 1:nrow(mydf),
+      ticktext = unique(mydf$Task), domain = c(0, 0.9)
+    ),
 
-                      # Annotations
-                      annotations = list(
-                        # Add total duration and total resources used
-                        # x and y coordinates are based on a domain of [0,1] and not
-                        # actual x-axis and y-axis values
+    # Annotations
+    annotations = list(
+      # Add total duration and total resources used
+      # x and y coordinates are based on a domain of [0,1] and not
+      # actual x-axis and y-axis values
 
-                        list(xref = "paper", yref = "paper", x = 0.80, y = 0.1,
-                             text = paste0("Total Duration: ", sum(mydf$Duration), " days\n",
-                                           "Total Resources: ", length(unique(mydf$Resource)), "\n\n"),
-                             font = list(color = "#ffff66", size = 12),
-                             ax = 0, ay = 0, align = "left"),
+      list(
+        xref = "paper", yref = "paper", x = 0.80, y = 0.1,
+        text = paste0(
+          "Total Duration: ", sum(mydf$Duration), " days\n",
+          "Total Resources: ", length(unique(mydf$Resource)), "\n\n"
+        ),
+        font = list(color = "#ffff66", size = 12),
+        ax = 0, ay = 0, align = "left"
+      ),
 
-                        # Add client name and title on top
-                        list(xref = "paper", yref = "paper", x = 0.1, y = 1, xanchor = "left",
-                             text = paste0("Gantt Chart: ", client),
-                             font = list(color = "#f2f2f2", size = 20, family = "Times New Roman"),
-                             ax = 0, ay = 0, align = "left")),
+      # Add client name and title on top
+      list(
+        xref = "paper", yref = "paper", x = 0.1, y = 1, xanchor = "left",
+        text = paste0("Gantt Chart: ", client),
+        font = list(color = "#f2f2f2", size = 20, family = "Times New Roman"),
+        ax = 0, ay = 0, align = "left"
+      )
+    ),
 
-                      plot_bgcolor = "#333333",
-                      # Chart area color
-                      paper_bgcolor = "#333333"
-  )  # Axis area color
+    plot_bgcolor = "#333333",
+    # Chart area color
+    paper_bgcolor = "#333333"
+  ) # Axis area color
   p
 }
