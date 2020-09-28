@@ -26,6 +26,6 @@ Specifically it utilizes the listHolidays function to figure out which holidays
 are existing.
 }
 \examples{
-b<-genHolidays(2016:2017)
+b <- genHolidays(2016:2017)
 b[1:10, 1:5]
 }

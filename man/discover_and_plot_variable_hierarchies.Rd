@@ -22,7 +22,7 @@ to optimize the mutual information. This also compares the n networks found grap
 data(iris)
 data(mtcars)
 library(dplyr)
-if(requireNamespace("Rgraphviz")){
+if (requireNamespace("Rgraphviz")) {
   discover_and_plot_variable_hierarchies(mtcars, 10) \%>\% as_tibble()
   discover_and_plot_variable_hierarchies(iris, 10) \%>\% as_tibble()
 }

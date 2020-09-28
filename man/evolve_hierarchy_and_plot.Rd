@@ -42,6 +42,6 @@ data(mtcars)
 library(Rgraphviz)
 library(bnlearn)
 evolve_hierarchy_and_plot(mtcars)
-blacklist <- data.frame(from=c("cyl", "cyl", "cyl"), to=c("drat", "vs", "mpg"))
-evolve_hierarchy_and_plot(mtcars, blacklist=blacklist)
+blacklist <- data.frame(from = c("cyl", "cyl", "cyl"), to = c("drat", "vs", "mpg"))
+evolve_hierarchy_and_plot(mtcars, blacklist = blacklist)
 }

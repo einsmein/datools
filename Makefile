@@ -15,7 +15,7 @@ build:
 	R CMD build .
 
 check: build
-	R CMD check --no-manual $(PKGNAME)_$(PKGVERS).tar.gz
+	Rscript -e 'devtools::check()'
 
 install_deps:
 	Rscript \

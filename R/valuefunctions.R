@@ -85,9 +85,9 @@ extrapolateNA <- function(x, len=3)
        tmpdfhead$val <- p
        retdf <- dplyr::full_join(retdf, tmpdfhead, by=c("id", "val"))
    }
-   if(is.na(tail(x, 1)))
+   if(is.na(utils::tail(x, 1)))
    {
-       firsttailnaind <- tail(which(!is.na(x)), 1)+1
+       firsttailnaind <- utils::tail(which(!is.na(x)), 1)+1
        tmpdftail <- tmpdf[firsttailnaind:nrow(tmpdf),]
        retdf <- retdf[-c(firsttailnaind:nrow(tmpdf)),]
        modeldftail <- utils::tail(modeldf, len)
@@ -96,5 +96,5 @@ extrapolateNA <- function(x, len=3)
        tmpdftail$val <- p
        retdf <- dplyr::full_join(retdf, tmpdftail, by=c("id", "val"))
    }
-   arrange(retdf, id)$val
+   dplyr::arrange(retdf, id)$val
 }

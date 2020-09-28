@@ -20,12 +20,14 @@ It also visualized upper and lower level for that estimate.
 library(ggplot2)
 library(dplyr)
 data(economics)
-myfit <- lm(unemploy~pop+psavert, data=economics)
-preddf <- predict(myfit, interval="predict") \%>\% as_tibble()
-preddf <- preddf \%>\% transmute(date=as.Date(economics$date),
-                               observed=economics$unemploy,
-                               estimate=fit,
-                               lower=lwr,
-                               upper=upr)
+myfit <- lm(unemploy ~ pop + psavert, data = economics)
+preddf <- predict(myfit, interval = "predict") \%>\% as_tibble()
+preddf <- preddf \%>\% transmute(
+  date = as.Date(economics$date),
+  observed = economics$unemploy,
+  estimate = fit,
+  lower = lwr,
+  upper = upr
+)
 plotPrediction(preddf)
 }

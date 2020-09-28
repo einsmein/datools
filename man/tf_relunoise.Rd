@@ -17,13 +17,14 @@ An implementation of the Noisy ReLu transformation function
 }
 \examples{
 library(ggplot2)
-ggplot(data.frame(x=c(0, 4)), aes(x)) +
-  stat_function(fun=function(x) tf_relunoise(x))
+ggplot(data.frame(x = c(0, 4)), aes(x)) +
+  stat_function(fun = function(x) tf_relunoise(x))
 \dontrun{
 library(microbenchmark)
 microbenchmark::microbenchmark(tf_relu(1:100), tf_softplus(1:100),
-                               tf_dagum(1:100), tf_sigmoid(1:100),
-                               tf_fisk(1:100), tf_relunoise(1:100),
-                               times = 10000)
+  tf_dagum(1:100), tf_sigmoid(1:100),
+  tf_fisk(1:100), tf_relunoise(1:100),
+  times = 10000
+)
 }
 }

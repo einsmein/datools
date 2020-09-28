@@ -20,21 +20,21 @@ sales modeling.
 \examples{
 library(ggplot2)
 datadf <-
-tibble::tibble(
-  desc = c(
-    'starting_net_income',
-    'write_offs',
-    'sales',
-    'COGS',
-    'overhead',
-    'taxes',
-    'bonuses',
-    'other_income',
-    'ending_net_income'
-  ),
-  amount = c(1200, -2300, 11000, -9000, -1900, -1200, -3000, 7000, 1800)
-)
+  tibble::tibble(
+    desc = c(
+      "starting_net_income",
+      "write_offs",
+      "sales",
+      "COGS",
+      "overhead",
+      "taxes",
+      "bonuses",
+      "other_income",
+      "ending_net_income"
+    ),
+    amount = c(1200, -2300, 11000, -9000, -1900, -1200, -3000, 7000, 1800)
+  )
 plot_waterfall(datadf) +
-  scale_fill_brewer(type="seq", palette = 4) +
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.9, hjust=1))
+  scale_fill_brewer(type = "seq", palette = 4) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.9, hjust = 1))
 }

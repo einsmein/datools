@@ -20,5 +20,5 @@ Component Analysis (PCA) space.
 }
 \examples{
 library(datools)
-plotPCAComponent(iris[,-5], iris$Species) + theme_minimal()
+plotPCAComponent(iris[, -5], iris$Species) + theme_minimal()
 }

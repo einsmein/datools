@@ -36,9 +36,10 @@ library(RSQLite)
 library(dplyr)
 sqlite_file <- "example.sqlite"
 table_name <- "example"
-write.csv(airquality, "example.csv", row.names=FALSE)
+write.csv(airquality, "example.csv", row.names = FALSE)
 csvToSQLite("example.csv", sqlite_file, table_name,
-              pre_process_size = 1000, chunk_size = 50000)
+  pre_process_size = 1000, chunk_size = 50000
+)
 mydb <- src_sqlite(sqlite_file, create = FALSE)
 mydata <- tbl(mydb, table_name)
 head(mydata)

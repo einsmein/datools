@@ -17,6 +17,6 @@ An implementation of the Softplus ReLu transformation function
 }
 \examples{
 library(ggplot2)
-ggplot(data.frame(x=c(0, 4)), aes(x)) +
-  stat_function(fun=function(x) tf_softplus(x))
+ggplot(data.frame(x = c(0, 4)), aes(x)) +
+  stat_function(fun = function(x) tf_softplus(x))
 }

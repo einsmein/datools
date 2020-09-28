@@ -23,6 +23,6 @@ An implementation of the CDF for the Dagum distribution.
 }
 \examples{
 library(ggplot2)
-ggplot(data.frame(x=c(0, 4)), aes(x)) +
-  stat_function(fun=function(x) tf_dagum(x, 1, 2, 2))
+ggplot(data.frame(x = c(0, 4)), aes(x)) +
+  stat_function(fun = function(x) tf_dagum(x, 1, 2, 2))
 }

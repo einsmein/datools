@@ -22,7 +22,9 @@ in the original vector. See the examples for details.
 }
 \examples{
 library(lubridate)
-oneHotEncoder2(x=seq(as.Date("2017-01-01"), by ="day", length.out = 10),
-              f=function(x) wday(x, label = TRUE))
-oneHotEncoder2(x=wday(seq(as.Date("2017-10-07"), by ="days", length.out = 10), label = TRUE))
+oneHotEncoder2(
+  x = seq(as.Date("2017-01-01"), by = "day", length.out = 10),
+  f = function(x) wday(x, label = TRUE)
+)
+oneHotEncoder2(x = wday(seq(as.Date("2017-10-07"), by = "days", length.out = 10), label = TRUE))
 }

@@ -25,7 +25,9 @@ expect_equal(sum(nonFinToVal(tmpvec)), sum(tmpvec, na.rm = T))
 expect_equal(sum(nonFinToVal(tmpvec)), 30)
 expect_equal(sum(nonFinToVal(tmpvec, 0)), sum(naToVal(tmpvec, 0)))
 
-expect_equal()
+expect_equal(extrapolateNA(c(NA,NA,NA,4,5,6,7, NA,NA)), c(1, 4, 5, 6, 7, NA, 8, NA, 9))
+expect_equal(extrapolateNA(c(0,NA,NA,4,5,6,7, NA,NA)), c(0, NA, NA, 4, 5, 6, 7, 8, 9))
+expect_equal(extrapolateNA(c(0,NA,NA,4,5,6,7, NA,9)), c(0, NA, NA, 4, 5, 6, 7, NA, 9))
 
 context("Date functions")
 expect_equal(c("201747", "201548", "200953"), datools::dateToIsoWeek(c("2017-11-23", "2015-11-23", "2009-12-31")))
