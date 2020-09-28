@@ -50,3 +50,51 @@ nonFinToVal <- function(x, y = 0) {
   x[!is.finite(x)] <- y
   return(x)
 }
+
+
+#' Extrapolate NA's in a univariate vector
+#'
+#' Extrapolates NA's in the beginning or the end of a univariate vector.
+#' Intermediate NA's that occur between two observed values are not touched.
+#' Please use interpolation for that case.
+#'
+#' @param x the univariate vector to extrapolate
+#' @param len the number of non NA elements to base the extrapolation on which
+#' defaults to 3
+#' @return a vector with the NA's in the beginning and the end extrapolated
+#' @export
+#' @examples
+#' extrapolateNA(c(NA,NA,NA,4,5,6,7, NA,NA))
+#' extrapolateNA(c(0,NA,NA,4,5,6,7, NA,NA))
+#' extrapolateNA(c(0,NA,NA,4,5,6,7, NA,9))
+extrapolateNA <- function(x, len=3)
+{
+   id <- val <- NA
+   if(all(is.na(x))) return(NA)
+   tmpdf <- dplyr::tibble(id=seq_along(x), val=x)
+   modeldf <- stats::na.omit(tmpdf)
+   retdf <- tmpdf
+   if(is.na(x[1]))
+   {
+       lastheadnaind <- which(!is.na(x))[1]-1
+       tmpdfhead <- tmpdf[1:lastheadnaind,]
+       retdf <- retdf[-c(1:lastheadnaind),]
+       modeldfhead <- utils::head(modeldf, len)
+       myfit <- lm(val~id, data=modeldfhead)
+       p <- stats::predict(myfit, newdata=tmpdfhead)
+       tmpdfhead$val <- p
+       retdf <- dplyr::full_join(retdf, tmpdfhead, by=c("id", "val"))
+   }
+   if(is.na(tail(x, 1)))
+   {
+       firsttailnaind <- tail(which(!is.na(x)), 1)+1
+       tmpdftail <- tmpdf[firsttailnaind:nrow(tmpdf),]
+       retdf <- retdf[-c(firsttailnaind:nrow(tmpdf)),]
+       modeldftail <- utils::tail(modeldf, len)
+       myfit <- lm(val~id, data=modeldftail)
+       p <- stats::predict(myfit, newdata=tmpdftail)
+       tmpdftail$val <- p
+       retdf <- dplyr::full_join(retdf, tmpdftail, by=c("id", "val"))
+   }
+   arrange(retdf, id)$val
+}

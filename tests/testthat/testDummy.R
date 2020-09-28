@@ -25,6 +25,8 @@ expect_equal(sum(nonFinToVal(tmpvec)), sum(tmpvec, na.rm = T))
 expect_equal(sum(nonFinToVal(tmpvec)), 30)
 expect_equal(sum(nonFinToVal(tmpvec, 0)), sum(naToVal(tmpvec, 0)))
 
+expect_equal()
+
 context("Date functions")
 expect_equal(c("201747", "201548", "200953"), datools::dateToIsoWeek(c("2017-11-23", "2015-11-23", "2009-12-31")))
 
@@ -57,3 +59,4 @@ expect_equal(rangeToBuckets(1:3, 5), list(1:3))
 expect_equal(rangeToBuckets(1:3, 3), list(1:3))
 expect_equal(rangeToBuckets(1:3, 2), list(1:2, 3L))
 expect_equal(rangeToBuckets(-2:3, 4), list(-2:1, 2:3))
+

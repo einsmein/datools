@@ -169,28 +169,28 @@ days later than the input data.</p>
 <span class='no'>tmpdf</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/reexports.html'>tibble</a></span>(<span class='kw'>date</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='kw'>from</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span>(<span class='st'>"2018-01-01"</span>), <span class='kw'>length.out</span><span class='kw'>=</span><span class='fl'>10</span>, <span class='kw'>by</span><span class='kw'>=</span><span class='st'>"1 day"</span>),
                 <span class='kw'>a</span><span class='kw'>=</span><span class='fl'>1</span>:<span class='fl'>10</span>, <span class='kw'>b</span><span class='kw'>=</span><span class='fl'>11</span>:<span class='fl'>20</span>, <span class='kw'>d</span><span class='kw'>=</span><span class='fl'>21</span>:<span class='fl'>30</span>)
 <span class='no'>lagdf</span> <span class='kw'>&lt;-</span> <span class='no'>tmpdf</span> <span class='kw'>%&gt;%</span> <span class='fu'>lagvariables</span>(<span class='fl'>4</span>)
-<span class='no'>lagdf</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 7 x 13</span><span>
+<span class='no'>lagdf</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 7 x 13</span><span>
 #&gt;   date    a_l0  a_l1  a_l2  a_l3  b_l0  b_l1  b_l2  b_l3  d_l0  d_l1  d_l2  d_l3
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> 2018-…     4     3     2     1    14    13    12    11    24    23    22    21
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> 2018-…     5     4     3     2    15    14    13    12    25    24    23    22
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> 2018-…     6     5     4     3    16    15    14    13    26    25    24    23
-#&gt; </span><span style='color: #BCBCBC;'>4</span><span> 2018-…     7     6     5     4    17    16    15    14    27    26    25    24
-#&gt; </span><span style='color: #BCBCBC;'>5</span><span> 2018-…     8     7     6     5    18    17    16    15    28    27    26    25
-#&gt; </span><span style='color: #BCBCBC;'>6</span><span> 2018-…     9     8     7     6    19    18    17    16    29    28    27    26
-#&gt; </span><span style='color: #BCBCBC;'>7</span><span> 2018-…    10     9     8     7    20    19    18    17    30    29    28    27</div><div class='input'><span class='no'>tmpdf</span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 10 x 4</span><span>
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span> 2018-…     4     3     2     1    14    13    12    11    24    23    22    21
+#&gt; </span><span style='color: #555555;'>2</span><span> 2018-…     5     4     3     2    15    14    13    12    25    24    23    22
+#&gt; </span><span style='color: #555555;'>3</span><span> 2018-…     6     5     4     3    16    15    14    13    26    25    24    23
+#&gt; </span><span style='color: #555555;'>4</span><span> 2018-…     7     6     5     4    17    16    15    14    27    26    25    24
+#&gt; </span><span style='color: #555555;'>5</span><span> 2018-…     8     7     6     5    18    17    16    15    28    27    26    25
+#&gt; </span><span style='color: #555555;'>6</span><span> 2018-…     9     8     7     6    19    18    17    16    29    28    27    26
+#&gt; </span><span style='color: #555555;'>7</span><span> 2018-…    10     9     8     7    20    19    18    17    30    29    28    27</div><div class='input'><span class='no'>tmpdf</span></div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 10 x 4</span><span>
 #&gt;    date           a     b     d
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> 2018-01-01     1    11    21
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> 2018-01-02     2    12    22
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> 2018-01-03     3    13    23
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> 2018-01-04     4    14    24
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> 2018-01-05     5    15    25
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> 2018-01-06     6    16    26
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> 2018-01-07     7    17    27
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> 2018-01-08     8    18    28
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> 2018-01-09     9    19    29
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> 2018-01-10    10    20    30</div></span></pre>
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;date&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span> 2018-01-01     1    11    21
+#&gt; </span><span style='color: #555555;'> 2</span><span> 2018-01-02     2    12    22
+#&gt; </span><span style='color: #555555;'> 3</span><span> 2018-01-03     3    13    23
+#&gt; </span><span style='color: #555555;'> 4</span><span> 2018-01-04     4    14    24
+#&gt; </span><span style='color: #555555;'> 5</span><span> 2018-01-05     5    15    25
+#&gt; </span><span style='color: #555555;'> 6</span><span> 2018-01-06     6    16    26
+#&gt; </span><span style='color: #555555;'> 7</span><span> 2018-01-07     7    17    27
+#&gt; </span><span style='color: #555555;'> 8</span><span> 2018-01-08     8    18    28
+#&gt; </span><span style='color: #555555;'> 9</span><span> 2018-01-09     9    19    29
+#&gt; </span><span style='color: #555555;'>10</span><span> 2018-01-10    10    20    30</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
