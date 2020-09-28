@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">datools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
       </span>
     </div>
 
@@ -157,7 +157,7 @@
 #&gt; <span class='message'>Attaching package: ‘MASS’</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:dplyr’:</span>
 #&gt; <span class='message'></span>
 #&gt; <span class='message'>    select</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"birthwt"</span>)
-<span class='fu'>vif</span>(<span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span>(<span class='no'>bwt</span>~<span class='no'>low</span>+<span class='no'>smoke</span>+<span class='no'>age</span>+<span class='no'>race</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>birthwt</span>))</div><div class='output co'>#&gt;           GVIF Df GVIF^(1/(2*Df))
+<span class='fu'>vif</span>(<span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span>(<span class='no'>bwt</span> ~ <span class='no'>low</span> + <span class='no'>smoke</span> + <span class='no'>age</span> + <span class='no'>race</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>birthwt</span>))</div><div class='output co'>#&gt;           GVIF Df GVIF^(1/(2*Df))
 #&gt; low   1.078953  1        1.038727
 #&gt; smoke 1.199359  1        1.095153
 #&gt; age   1.049576  1        1.024488

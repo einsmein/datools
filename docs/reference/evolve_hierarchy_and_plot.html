@@ -84,7 +84,7 @@ highlighted by color." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">datools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
       </span>
     </div>
 
@@ -211,10 +211,8 @@ Plot</p></td>
 #&gt; <span class='message'></span>
 #&gt; <span class='message'>    degree, nodes, nodes&lt;-</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:BiocGenerics’:</span>
 #&gt; <span class='message'></span>
-#&gt; <span class='message'>    path, score</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:stats’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    sigma</span></div><div class='input'><span class='fu'>evolve_hierarchy_and_plot</span>(<span class='no'>mtcars</span>)</div><div class='img'><img src='evolve_hierarchy_and_plot-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='no'>blacklist</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>from</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"cyl"</span>, <span class='st'>"cyl"</span>, <span class='st'>"cyl"</span>), <span class='kw'>to</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"drat"</span>, <span class='st'>"vs"</span>, <span class='st'>"mpg"</span>))
-<span class='fu'>evolve_hierarchy_and_plot</span>(<span class='no'>mtcars</span>, <span class='kw'>blacklist</span><span class='kw'>=</span><span class='no'>blacklist</span>)</div><div class='img'><img src='evolve_hierarchy_and_plot-2.png' alt='' width='700' height='433' /></div></pre>
+#&gt; <span class='message'>    path, score</span></div><div class='input'><span class='fu'>evolve_hierarchy_and_plot</span>(<span class='no'>mtcars</span>)</div><div class='img'><img src='evolve_hierarchy_and_plot-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='no'>blacklist</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>from</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"cyl"</span>, <span class='st'>"cyl"</span>, <span class='st'>"cyl"</span>), <span class='kw'>to</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"drat"</span>, <span class='st'>"vs"</span>, <span class='st'>"mpg"</span>))
+<span class='fu'>evolve_hierarchy_and_plot</span>(<span class='no'>mtcars</span>, <span class='kw'>blacklist</span> <span class='kw'>=</span> <span class='no'>blacklist</span>)</div><div class='img'><img src='evolve_hierarchy_and_plot-2.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

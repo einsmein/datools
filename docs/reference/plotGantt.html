@@ -91,7 +91,7 @@ where the duration is given in days." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">datools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
       </span>
     </div>
 
@@ -186,12 +186,22 @@ where the duration is given in days.</p>
     <p>Originally source appeared on <a href='https://www.r-bloggers.com/gantt-charts-in-r-using-plotly/'>https://www.r-bloggers.com/gantt-charts-in-r-using-plotly/</a>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>tmpdf</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/structure.html'>structure</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>Task</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Task 1"</span>, <span class='st'>"Task 2"</span>, <span class='st'>"Task 3"</span>, <span class='st'>"Task 4"</span>,
-<span class='st'>"Task 5"</span>, <span class='st'>"Task 6"</span>, <span class='st'>"Task 7"</span>, <span class='st'>"Task 8"</span>), <span class='kw'>Start</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/structure.html'>structure</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>16801</span>,
-<span class='fl'>16851</span>, <span class='fl'>16801</span>, <span class='fl'>16901</span>, <span class='fl'>16961</span>, <span class='fl'>16901</span>, <span class='fl'>17051</span>, <span class='fl'>17131</span>), <span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"Date"</span>),
-<span class='kw'>Duration</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>50L</span>, <span class='fl'>25L</span>, <span class='fl'>100L</span>, <span class='fl'>60L</span>, <span class='fl'>30L</span>, <span class='fl'>150L</span>, <span class='fl'>80L</span>, <span class='fl'>10L</span>), <span class='kw'>Resource</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"A"</span>,
-<span class='st'>"B"</span>, <span class='st'>"C"</span>, <span class='st'>"C"</span>, <span class='st'>"C"</span>, <span class='st'>"A"</span>, <span class='st'>"B"</span>, <span class='st'>"B"</span>)), <span class='kw'>.Names</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Task"</span>, <span class='st'>"Start"</span>,
-<span class='st'>"Duration"</span>, <span class='st'>"Resource"</span>), <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>NA</span>, -<span class='fl'>8L</span>), <span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"data.frame"</span>)
+    <pre class="examples"><div class='input'><span class='no'>tmpdf</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/structure.html'>structure</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
+  <span class='kw'>Task</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(
+    <span class='st'>"Task 1"</span>, <span class='st'>"Task 2"</span>, <span class='st'>"Task 3"</span>, <span class='st'>"Task 4"</span>,
+    <span class='st'>"Task 5"</span>, <span class='st'>"Task 6"</span>, <span class='st'>"Task 7"</span>, <span class='st'>"Task 8"</span>
+  ), <span class='kw'>Start</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/structure.html'>structure</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(
+    <span class='fl'>16801</span>,
+    <span class='fl'>16851</span>, <span class='fl'>16801</span>, <span class='fl'>16901</span>, <span class='fl'>16961</span>, <span class='fl'>16901</span>, <span class='fl'>17051</span>, <span class='fl'>17131</span>
+  ), <span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"Date"</span>),
+  <span class='kw'>Duration</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>50L</span>, <span class='fl'>25L</span>, <span class='fl'>100L</span>, <span class='fl'>60L</span>, <span class='fl'>30L</span>, <span class='fl'>150L</span>, <span class='fl'>80L</span>, <span class='fl'>10L</span>), <span class='kw'>Resource</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(
+    <span class='st'>"A"</span>,
+    <span class='st'>"B"</span>, <span class='st'>"C"</span>, <span class='st'>"C"</span>, <span class='st'>"C"</span>, <span class='st'>"A"</span>, <span class='st'>"B"</span>, <span class='st'>"B"</span>
+  )
+), <span class='kw'>.Names</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(
+  <span class='st'>"Task"</span>, <span class='st'>"Start"</span>,
+  <span class='st'>"Duration"</span>, <span class='st'>"Resource"</span>
+), <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>NA</span>, -<span class='fl'>8L</span>), <span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"data.frame"</span>)
 <span class='fu'>plotGantt</span>(<span class='no'>tmpdf</span>, <span class='st'>"Sample Client"</span>)</div><div class='output co'>#&gt; <span class='message'>No trace type specified:</span>
 #&gt; <span class='message'>  Based on info supplied, a 'scatter' trace seems appropriate.</span>
 #&gt; <span class='message'>  Read more about this trace type -&gt; https://plot.ly/r/reference/#scatter</span></div><div class='output co'>#&gt; <span class='warning'>Warning: `arrange_()` is deprecated as of dplyr 0.7.0.</span>

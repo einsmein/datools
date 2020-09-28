@@ -81,7 +81,7 @@ to optimize the mutual information. This also compares the n networks found grap
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">datools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
       </span>
     </div>
 
@@ -162,7 +162,7 @@ to optimize the mutual information. This also compares the n networks found grap
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>iris</span>)
 <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>mtcars</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>dplyr</span>)
-<span class='kw'>if</span>(<span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span>(<span class='st'>"Rgraphviz"</span>)){
+<span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span>(<span class='st'>"Rgraphviz"</span>)) {
   <span class='fu'>discover_and_plot_variable_hierarchies</span>(<span class='no'>mtcars</span>, <span class='fl'>10</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/reexports.html'>as_tibble</a></span>()
   <span class='fu'>discover_and_plot_variable_hierarchies</span>(<span class='no'>iris</span>, <span class='fl'>10</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/reexports.html'>as_tibble</a></span>()
 }</div><div class='output co'>#&gt; <span class='message'>Loading required namespace: Rgraphviz</span></div><div class='output co'>#&gt; <span class='message'>Loading required namespace: bnlearn</span></div><div class='img'><img src='discover_and_plot_variable_hierarchies-1.png' alt='' width='700' height='433' /></div><div class='img'><img src='discover_and_plot_variable_hierarchies-2.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 8 x 2</span><span>

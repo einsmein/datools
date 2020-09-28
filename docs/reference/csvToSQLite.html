@@ -82,7 +82,7 @@ can work with really big data files without being limited by your machines RAM."
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">datools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
       </span>
     </div>
 
@@ -189,9 +189,10 @@ can work with really big data files without being limited by your machines RAM.<
 #&gt; <span class='message'></span>
 #&gt; <span class='message'>    intersect, setdiff, setequal, union</span></div><div class='input'><span class='no'>sqlite_file</span> <span class='kw'>&lt;-</span> <span class='st'>"example.sqlite"</span>
 <span class='no'>table_name</span> <span class='kw'>&lt;-</span> <span class='st'>"example"</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/write.table.html'>write.csv</a></span>(<span class='no'>airquality</span>, <span class='st'>"example.csv"</span>, <span class='kw'>row.names</span><span class='kw'>=</span><span class='fl'>FALSE</span>)
+<span class='fu'><a href='https://rdrr.io/r/utils/write.table.html'>write.csv</a></span>(<span class='no'>airquality</span>, <span class='st'>"example.csv"</span>, <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 <span class='fu'>csvToSQLite</span>(<span class='st'>"example.csv"</span>, <span class='no'>sqlite_file</span>, <span class='no'>table_name</span>,
-              <span class='kw'>pre_process_size</span> <span class='kw'>=</span> <span class='fl'>1000</span>, <span class='kw'>chunk_size</span> <span class='kw'>=</span> <span class='fl'>50000</span>)</div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
+  <span class='kw'>pre_process_size</span> <span class='kw'>=</span> <span class='fl'>1000</span>, <span class='kw'>chunk_size</span> <span class='kw'>=</span> <span class='fl'>50000</span>
+)</div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
 #&gt; <span class='message'>cols(</span>
 #&gt; <span class='message'>  Ozone = <span style='color: #00BB00;'>col_double()</span><span>,</span>
 #&gt; <span class='message'>  Solar.R = </span><span style='color: #00BB00;'>col_double()</span><span>,</span>

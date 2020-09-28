@@ -81,7 +81,7 @@ It also visualized upper and lower level for that estimate." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">datools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
       </span>
     </div>
 
@@ -158,12 +158,14 @@ It also visualized upper and lower level for that estimate.</p>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>ggplot2</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>dplyr</span>)
 <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>economics</span>)
-<span class='no'>myfit</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span>(<span class='no'>unemploy</span>~<span class='no'>pop</span>+<span class='no'>psavert</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>economics</span>)
-<span class='no'>preddf</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span>(<span class='no'>myfit</span>, <span class='kw'>interval</span><span class='kw'>=</span><span class='st'>"predict"</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/reexports.html'>as_tibble</a></span>()</div><div class='output co'>#&gt; <span class='warning'>Warning: predictions on current data refer to _future_ responses</span></div><div class='input'><span class='no'>preddf</span> <span class='kw'>&lt;-</span> <span class='no'>preddf</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>transmute</a></span>(<span class='kw'>date</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span>(<span class='no'>economics</span>$<span class='no'>date</span>),
-                               <span class='kw'>observed</span><span class='kw'>=</span><span class='no'>economics</span>$<span class='no'>unemploy</span>,
-                               <span class='kw'>estimate</span><span class='kw'>=</span><span class='no'>fit</span>,
-                               <span class='kw'>lower</span><span class='kw'>=</span><span class='no'>lwr</span>,
-                               <span class='kw'>upper</span><span class='kw'>=</span><span class='no'>upr</span>)
+<span class='no'>myfit</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span>(<span class='no'>unemploy</span> ~ <span class='no'>pop</span> + <span class='no'>psavert</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>economics</span>)
+<span class='no'>preddf</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span>(<span class='no'>myfit</span>, <span class='kw'>interval</span> <span class='kw'>=</span> <span class='st'>"predict"</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/reexports.html'>as_tibble</a></span>()</div><div class='output co'>#&gt; <span class='warning'>Warning: predictions on current data refer to _future_ responses</span></div><div class='input'><span class='no'>preddf</span> <span class='kw'>&lt;-</span> <span class='no'>preddf</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>transmute</a></span>(
+  <span class='kw'>date</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span>(<span class='no'>economics</span>$<span class='no'>date</span>),
+  <span class='kw'>observed</span> <span class='kw'>=</span> <span class='no'>economics</span>$<span class='no'>unemploy</span>,
+  <span class='kw'>estimate</span> <span class='kw'>=</span> <span class='no'>fit</span>,
+  <span class='kw'>lower</span> <span class='kw'>=</span> <span class='no'>lwr</span>,
+  <span class='kw'>upper</span> <span class='kw'>=</span> <span class='no'>upr</span>
+)
 <span class='fu'>plotPrediction</span>(<span class='no'>preddf</span>)</div><div class='img'><img src='plotPrediction-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

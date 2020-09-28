@@ -83,7 +83,7 @@ in the original vector. See the examples for details." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">datools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
       </span>
     </div>
 
@@ -170,8 +170,10 @@ in the original vector. See the examples for details.</p>
 #&gt; <span class='message'></span>
 #&gt; <span class='message'>    intersect, setdiff, union</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:base’:</span>
 #&gt; <span class='message'></span>
-#&gt; <span class='message'>    date, intersect, setdiff, union</span></div><div class='input'><span class='fu'>oneHotEncoder</span>(<span class='kw'>x</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span>(<span class='st'>"2017-01-01"</span>), <span class='kw'>by</span> <span class='kw'>=</span><span class='st'>"day"</span>, <span class='kw'>length.out</span> <span class='kw'>=</span> <span class='fl'>10</span>),
-              <span class='kw'>f</span><span class='kw'>=</span><span class='kw'>function</span>(<span class='no'>x</span>) <span class='fu'><a href='http://lubridate.tidyverse.org/reference/day.html'>wday</a></span>(<span class='no'>x</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>))</div><div class='output co'>#&gt;          Data Sun Mon Tue Wed Thu Fri Sat
+#&gt; <span class='message'>    date, intersect, setdiff, union</span></div><div class='input'><span class='fu'>oneHotEncoder</span>(
+  <span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span>(<span class='st'>"2017-01-01"</span>), <span class='kw'>by</span> <span class='kw'>=</span> <span class='st'>"day"</span>, <span class='kw'>length.out</span> <span class='kw'>=</span> <span class='fl'>10</span>),
+  <span class='kw'>f</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>x</span>) <span class='fu'><a href='http://lubridate.tidyverse.org/reference/day.html'>wday</a></span>(<span class='no'>x</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+)</div><div class='output co'>#&gt;          Data Sun Mon Tue Wed Thu Fri Sat
 #&gt; 1  2017-01-01   1   0   0   0   0   0   0
 #&gt; 2  2017-01-02   0   1   0   0   0   0   0
 #&gt; 3  2017-01-03   0   0   1   0   0   0   0
@@ -181,7 +183,7 @@ in the original vector. See the examples for details.</p>
 #&gt; 7  2017-01-07   0   0   0   0   0   0   1
 #&gt; 8  2017-01-08   1   0   0   0   0   0   0
 #&gt; 9  2017-01-09   0   1   0   0   0   0   0
-#&gt; 10 2017-01-10   0   0   1   0   0   0   0</div><div class='input'><span class='fu'>oneHotEncoder</span>(<span class='kw'>x</span><span class='kw'>=</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/day.html'>wday</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span>(<span class='st'>"2017-10-07"</span>), <span class='kw'>by</span> <span class='kw'>=</span><span class='st'>"days"</span>, <span class='kw'>length.out</span> <span class='kw'>=</span> <span class='fl'>10</span>), <span class='kw'>label</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>))</div><div class='output co'>#&gt;    Data Sun Mon Tue Wed Thu Fri Sat
+#&gt; 10 2017-01-10   0   0   1   0   0   0   0</div><div class='input'><span class='fu'>oneHotEncoder</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'><a href='http://lubridate.tidyverse.org/reference/day.html'>wday</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span>(<span class='st'>"2017-10-07"</span>), <span class='kw'>by</span> <span class='kw'>=</span> <span class='st'>"days"</span>, <span class='kw'>length.out</span> <span class='kw'>=</span> <span class='fl'>10</span>), <span class='kw'>label</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>))</div><div class='output co'>#&gt;    Data Sun Mon Tue Wed Thu Fri Sat
 #&gt; 1   Sat   0   0   0   0   0   0   1
 #&gt; 2   Sun   1   0   0   0   0   0   0
 #&gt; 3   Mon   0   1   0   0   0   0   0
