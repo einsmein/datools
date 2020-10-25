@@ -2,7 +2,7 @@
 % Please edit documentation in R/models.R
 \name{scenarios}
 \alias{scenarios}
-\title{Create a number of scenarios base on a single observation}
+\title{Create a number of scenarios based on a single observation}
 \usage{
 scenarios(datapoint, varvals)
 }
