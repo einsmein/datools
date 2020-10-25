@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Convert an iso date to simple isoweek format — dateToIsoWeek • datools</title>
+<title>Create a number of scenarios based on a single observation — scenarios • datools</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,12 @@
 
 
 
-<meta property="og:title" content="Convert an iso date to simple isoweek format — dateToIsoWeek" />
-<meta property="og:description" content="Simplistic representation of an isoweek format is encoded here. Basically we convert 2017-11-23 to 201747 thus YYYY-MM-DD to YYYYWW." />
+<meta property="og:title" content="Create a number of scenarios based on a single observation — scenarios" />
+<meta property="og:description" content="Most common use case is a data.frame full of observations and you want to
+simulate different values of a few variables while keeping the others fixed.
+This is important in models with interactions as well as non-linear models.
+The data.frame return from this function can go directly into a
+stats::predict call if the model being predicted on supports that interface." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -116,32 +120,53 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Convert an iso date to simple isoweek format</h1>
-    <small class="dont-index">Source: <a href='https://github.com/DoktorMike/datools/blob/master/R/calendar.R'><code>R/calendar.R</code></a></small>
-    <div class="hidden name"><code>dateToIsoWeek.Rd</code></div>
+    <h1>Create a number of scenarios based on a single observation</h1>
+    <small class="dont-index">Source: <a href='https://github.com/DoktorMike/datools/blob/master/R/models.R'><code>R/models.R</code></a></small>
+    <div class="hidden name"><code>scenarios.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Simplistic representation of an isoweek format is encoded here. Basically we convert 2017-11-23 to 201747 thus YYYY-MM-DD to YYYYWW.</p>
+    <p>Most common use case is a data.frame full of observations and you want to
+simulate different values of a few variables while keeping the others fixed.
+This is important in models with interactions as well as non-linear models.
+The data.frame return from this function can go directly into a
+stats::predict call if the model being predicted on supports that interface.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>dateToIsoWeek</span>(<span class='no'>dates</span>)</pre>
+    <pre class="usage"><span class='fu'>scenarios</span>(<span class='no'>datapoint</span>, <span class='no'>varvals</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>dates</th>
-      <td><p>ISOdates as string vector</p></td>
+      <th>datapoint</th>
+      <td><p>containing all variables that a scenarios needs in addition
+to the ones you want to manipulate</p></td>
+    </tr>
+    <tr>
+      <th>varvals</th>
+      <td><p>is a named list where each list item is a vector with all the
+values you would like to test for the named variable</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a vector of strings with ISOweeks inside</p>
+    <p>a tibble with all the combinations of the values you choose to change</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>dateToIsoWeek</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"2017-11-23"</span>, <span class='st'>"2015-11-23"</span>))</div><div class='output co'>#&gt; [1] "201747" "201548"</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>scenarios</span>(<span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>A</span><span class='kw'>=</span><span class='fl'>0</span>, <span class='kw'>B</span><span class='kw'>=</span><span class='fl'>4</span>, <span class='kw'>C</span><span class='kw'>=</span><span class='fl'>6</span>), <span class='kw'>varvals</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>B</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2</span>,<span class='fl'>3</span>,<span class='fl'>6</span>), <span class='kw'>A</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>7</span>,<span class='fl'>9</span>)))</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 9 x 3</span><span>
+#&gt;       A     B     C
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span>     1     2     6
+#&gt; </span><span style='color: #555555;'>2</span><span>     1     3     6
+#&gt; </span><span style='color: #555555;'>3</span><span>     1     6     6
+#&gt; </span><span style='color: #555555;'>4</span><span>     7     2     6
+#&gt; </span><span style='color: #555555;'>5</span><span>     7     3     6
+#&gt; </span><span style='color: #555555;'>6</span><span>     7     6     6
+#&gt; </span><span style='color: #555555;'>7</span><span>     9     2     6
+#&gt; </span><span style='color: #555555;'>8</span><span>     9     3     6
+#&gt; </span><span style='color: #555555;'>9</span><span>     9     6     6</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
