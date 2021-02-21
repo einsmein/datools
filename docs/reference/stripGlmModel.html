@@ -90,7 +90,7 @@ storing stuff we don't need for prediction." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -101,7 +101,7 @@ storing stuff we don't need for prediction." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/DoktorMike/datools/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -129,7 +129,7 @@ deploying R in production settings as the standard GLM is way to liberal with
 storing stuff we don't need for prediction.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>stripGlmModel</span>(<span class='no'>a</span>)</pre>
+    <pre class="usage"><span class='fu'>stripGlmModel</span><span class='op'>(</span><span class='va'>a</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -145,9 +145,12 @@ storing stuff we don't need for prediction.</p>
     <p>a stripped GLM model</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>mylm</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/glm.html'>glm</a></span>(<span class='no'>dist</span> ~ <span class='no'>speed</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>cars</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='fu'><a href='https://rdrr.io/r/utils/object.size.html'>object.size</a></span>(<span class='no'>mylm</span>))</div><div class='output co'>#&gt; 82776 bytes</div><div class='input'><span class='no'>mylm</span> <span class='kw'>&lt;-</span> <span class='fu'>stripGlmModel</span>(<span class='no'>mylm</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='fu'><a href='https://rdrr.io/r/utils/object.size.html'>object.size</a></span>(<span class='no'>mylm</span>))</div><div class='output co'>#&gt; 51760 bytes</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span>(<span class='no'>mylm</span>, <span class='no'>cars</span>))</div><div class='output co'>#&gt;         1         2         3         4         5         6         7         8 
+    <pre class="examples"><div class='input'><span class='va'>mylm</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/glm.html'>glm</a></span><span class='op'>(</span><span class='va'>dist</span> <span class='op'>~</span> <span class='va'>speed</span>, data <span class='op'>=</span> <span class='va'>cars</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/utils/object.size.html'>object.size</a></span><span class='op'>(</span><span class='va'>mylm</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; 82776 bytes</div><div class='input'><span class='va'>mylm</span> <span class='op'>&lt;-</span> <span class='fu'>stripGlmModel</span><span class='op'>(</span><span class='va'>mylm</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/utils/object.size.html'>object.size</a></span><span class='op'>(</span><span class='va'>mylm</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; 51760 bytes</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>mylm</span>, <span class='va'>cars</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;         1         2         3         4         5         6         7         8 
 #&gt; -1.849460 -1.849460  9.947766  9.947766 13.880175 17.812584 21.744993 21.744993 
 #&gt;         9        10        11        12        13        14        15        16 
 #&gt; 21.744993 25.677401 25.677401 29.609810 29.609810 29.609810 29.609810 33.542219 
@@ -176,7 +179,7 @@ storing stuff we don't need for prediction.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

@@ -90,7 +90,7 @@ can work with really big data files without being limited by your machines RAM."
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -101,7 +101,7 @@ can work with really big data files without being limited by your machines RAM."
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/DoktorMike/datools/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -129,14 +129,14 @@ and store them as a SQLite db which can be streamed via dplyr. This way you
 can work with really big data files without being limited by your machines RAM.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>csvToSQLite</span>(
-  <span class='no'>csv_file</span>,
-  <span class='no'>sqlite_file</span>,
-  <span class='no'>table_name</span>,
-  <span class='kw'>pre_process_size</span> <span class='kw'>=</span> <span class='fl'>1000</span>,
-  <span class='kw'>chunk_size</span> <span class='kw'>=</span> <span class='fl'>50000</span>,
-  <span class='kw'>delim</span> <span class='kw'>=</span> <span class='st'>","</span>
-)</pre>
+    <pre class="usage"><span class='fu'>csvToSQLite</span><span class='op'>(</span>
+  <span class='va'>csv_file</span>,
+  <span class='va'>sqlite_file</span>,
+  <span class='va'>table_name</span>,
+  pre_process_size <span class='op'>=</span> <span class='fl'>1000</span>,
+  chunk_size <span class='op'>=</span> <span class='fl'>50000</span>,
+  delim <span class='op'>=</span> <span class='st'>","</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -169,18 +169,20 @@ can work with really big data files without being limited by your machines RAM.<
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>RSQLite</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>dplyr</span>)</div><div class='output co'>#&gt; <span class='message'></span>
+    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://rsqlite.r-dbi.org'>RSQLite</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'></span>
 #&gt; <span class='message'>Attaching package: ‘dplyr’</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:stats’:</span>
 #&gt; <span class='message'></span>
 #&gt; <span class='message'>    filter, lag</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:base’:</span>
 #&gt; <span class='message'></span>
-#&gt; <span class='message'>    intersect, setdiff, setequal, union</span></div><div class='input'><span class='no'>sqlite_file</span> <span class='kw'>&lt;-</span> <span class='st'>"example.sqlite"</span>
-<span class='no'>table_name</span> <span class='kw'>&lt;-</span> <span class='st'>"example"</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/write.table.html'>write.csv</a></span>(<span class='no'>airquality</span>, <span class='st'>"example.csv"</span>, <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
-<span class='fu'>csvToSQLite</span>(<span class='st'>"example.csv"</span>, <span class='no'>sqlite_file</span>, <span class='no'>table_name</span>,
-  <span class='kw'>pre_process_size</span> <span class='kw'>=</span> <span class='fl'>1000</span>, <span class='kw'>chunk_size</span> <span class='kw'>=</span> <span class='fl'>50000</span>
-)</div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>    intersect, setdiff, setequal, union</span></div><div class='input'><span class='va'>sqlite_file</span> <span class='op'>&lt;-</span> <span class='st'>"example.sqlite"</span>
+<span class='va'>table_name</span> <span class='op'>&lt;-</span> <span class='st'>"example"</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/write.table.html'>write.csv</a></span><span class='op'>(</span><span class='va'>airquality</span>, <span class='st'>"example.csv"</span>, row.names <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+<span class='fu'>csvToSQLite</span><span class='op'>(</span><span class='st'>"example.csv"</span>, <span class='va'>sqlite_file</span>, <span class='va'>table_name</span>,
+  pre_process_size <span class='op'>=</span> <span class='fl'>1000</span>, chunk_size <span class='op'>=</span> <span class='fl'>50000</span>
+<span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'></span>
 #&gt; <span class='message'><span style='color: #00BBBB;'>──</span><span> </span><span style='font-weight: bold;'>Column specification</span><span> </span><span style='color: #00BBBB;'>────────────────────────────────────────────────────────</span><span></span>
 #&gt; <span class='message'>cols(</span>
 #&gt; <span class='message'>  Ozone = </span><span style='color: #00BB00;'>col_double()</span><span>,</span>
@@ -189,21 +191,23 @@ can work with really big data files without being limited by your machines RAM.<
 #&gt; <span class='message'>  Temp = </span><span style='color: #00BB00;'>col_double()</span><span>,</span>
 #&gt; <span class='message'>  Month = </span><span style='color: #00BB00;'>col_double()</span><span>,</span>
 #&gt; <span class='message'>  Day = </span><span style='color: #00BB00;'>col_double()</span><span></span>
-#&gt; <span class='message'>)</span></div><div class='input'><span class='no'>mydb</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/src_dbi.html'>src_sqlite</a></span>(<span class='no'>sqlite_file</span>, <span class='kw'>create</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: `src_sqlite()` is deprecated as of dplyr 1.0.0.</span>
+#&gt; <span class='message'>)</span></div><div class='input'><span class='va'>mydb</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/src_dbi.html'>src_sqlite</a></span><span class='op'>(</span><span class='va'>sqlite_file</span>, create <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: `src_sqlite()` is deprecated as of dplyr 1.0.0.</span>
 #&gt; <span class='warning'>Please use `tbl()` directly with a database connection</span>
 #&gt; <span class='warning'></span><span style='color: #555555;'>This warning is displayed once every 8 hours.</span><span></span>
-#&gt; <span class='warning'></span><span style='color: #555555;'>Call `lifecycle::last_warnings()` to see where this warning was generated.</span><span></span></div><div class='input'><span class='no'>mydata</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/tbl.html'>tbl</a></span>(<span class='no'>mydb</span>, <span class='no'>table_name</span>)
-<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>mydata</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># Source:   lazy query [?? x 6]</span><span>
-#&gt; </span><span style='color: #555555;'># Database: sqlite 3.33.0
+#&gt; <span class='warning'></span><span style='color: #555555;'>Call `lifecycle::last_warnings()` to see where this warning was generated.</span><span></span></div><div class='input'><span class='va'>mydata</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/tbl.html'>tbl</a></span><span class='op'>(</span><span class='va'>mydb</span>, <span class='va'>table_name</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/pkg/Rgraphviz/man/AgEdge-class.html'>head</a></span><span class='op'>(</span><span class='va'>mydata</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># Source:   lazy query [?? x 6]</span><span>
+#&gt; </span><span style='color: #949494;'># Database: sqlite 3.34.0
 #&gt; #   [/home/michael/src/datools/docs/reference/example.sqlite]</span><span>
 #&gt;   Ozone Solar.R  Wind  Temp Month   Day
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span>    41     190   7.4    67     5     1
-#&gt; </span><span style='color: #555555;'>2</span><span>    36     118   8      72     5     2
-#&gt; </span><span style='color: #555555;'>3</span><span>    12     149  12.6    74     5     3
-#&gt; </span><span style='color: #555555;'>4</span><span>    18     313  11.5    62     5     4
-#&gt; </span><span style='color: #555555;'>5</span><span>    </span><span style='color: #BB0000;'>NA</span><span>      </span><span style='color: #BB0000;'>NA</span><span>  14.3    56     5     5
-#&gt; </span><span style='color: #555555;'>6</span><span>    28      </span><span style='color: #BB0000;'>NA</span><span>  14.9    66     5     6</div></span></pre>
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>    41     190   7.4    67     5     1
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span>    36     118   8      72     5     2
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span>    12     149  12.6    74     5     3
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span>    18     313  11.5    62     5     4
+#&gt; </span><span style='color: #BCBCBC;'>5</span><span>    </span><span style='color: #BB0000;'>NA</span><span>      </span><span style='color: #BB0000;'>NA</span><span>  14.3    56     5     5
+#&gt; </span><span style='color: #BCBCBC;'>6</span><span>    28      </span><span style='color: #BB0000;'>NA</span><span>  14.9    66     5     6</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -219,7 +223,7 @@ can work with really big data files without being limited by your machines RAM.<
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

@@ -91,7 +91,7 @@ in the original vector. See the examples for details." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -102,7 +102,7 @@ in the original vector. See the examples for details." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/DoktorMike/datools/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -131,7 +131,7 @@ a column and the value is 1 for that column if the row number matches the positi
 in the original vector. See the examples for details.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>oneHotEncoder</span>(<span class='no'>x</span>, <span class='kw'>f</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>y</span>) <span class='no'>y</span>)</pre>
+    <pre class="usage"><span class='fu'>oneHotEncoder</span><span class='op'>(</span><span class='va'>x</span>, f <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>y</span><span class='op'>)</span> <span class='va'>y</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -151,17 +151,19 @@ in the original vector. See the examples for details.</p>
     <p>the one hot encoded data.frame with the original data given in a Data column</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>lubridate</span>)</div><div class='output co'>#&gt; <span class='message'></span>
+    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://lubridate.tidyverse.org'>lubridate</a></span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'></span>
 #&gt; <span class='message'>Attaching package: ‘lubridate’</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:graph’:</span>
 #&gt; <span class='message'></span>
 #&gt; <span class='message'>    union</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:BiocGenerics’:</span>
 #&gt; <span class='message'></span>
 #&gt; <span class='message'>    intersect, setdiff, union</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:base’:</span>
 #&gt; <span class='message'></span>
-#&gt; <span class='message'>    date, intersect, setdiff, union</span></div><div class='input'><span class='fu'>oneHotEncoder</span>(
-  <span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span>(<span class='st'>"2017-01-01"</span>), <span class='kw'>by</span> <span class='kw'>=</span> <span class='st'>"day"</span>, <span class='kw'>length.out</span> <span class='kw'>=</span> <span class='fl'>10</span>),
-  <span class='kw'>f</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>x</span>) <span class='fu'><a href='https://rdrr.io/pkg/lubridate/man/day.html'>wday</a></span>(<span class='no'>x</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-)</div><div class='output co'>#&gt;          Data Sun Mon Tue Wed Thu Fri Sat
+#&gt; <span class='message'>    date, intersect, setdiff, union</span></div><div class='input'><span class='fu'>oneHotEncoder</span><span class='op'>(</span>
+  x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span><span class='op'>(</span><span class='st'>"2017-01-01"</span><span class='op'>)</span>, by <span class='op'>=</span> <span class='st'>"day"</span>, length.out <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span>,
+  f <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='fu'><a href='http://lubridate.tidyverse.org/reference/day.html'>wday</a></span><span class='op'>(</span><span class='va'>x</span>, label <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='op'>)</span>
+</div><div class='output co'>#&gt;          Data Sun Mon Tue Wed Thu Fri Sat
 #&gt; 1  2017-01-01   1   0   0   0   0   0   0
 #&gt; 2  2017-01-02   0   1   0   0   0   0   0
 #&gt; 3  2017-01-03   0   0   1   0   0   0   0
@@ -171,7 +173,8 @@ in the original vector. See the examples for details.</p>
 #&gt; 7  2017-01-07   0   0   0   0   0   0   1
 #&gt; 8  2017-01-08   1   0   0   0   0   0   0
 #&gt; 9  2017-01-09   0   1   0   0   0   0   0
-#&gt; 10 2017-01-10   0   0   1   0   0   0   0</div><div class='input'><span class='fu'>oneHotEncoder</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/lubridate/man/day.html'>wday</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span>(<span class='st'>"2017-10-07"</span>), <span class='kw'>by</span> <span class='kw'>=</span> <span class='st'>"days"</span>, <span class='kw'>length.out</span> <span class='kw'>=</span> <span class='fl'>10</span>), <span class='kw'>label</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>))</div><div class='output co'>#&gt;    Data Sun Mon Tue Wed Thu Fri Sat
+#&gt; 10 2017-01-10   0   0   1   0   0   0   0</div><div class='input'><span class='fu'>oneHotEncoder</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='http://lubridate.tidyverse.org/reference/day.html'>wday</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span><span class='op'>(</span><span class='st'>"2017-10-07"</span><span class='op'>)</span>, by <span class='op'>=</span> <span class='st'>"days"</span>, length.out <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span>, label <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;    Data Sun Mon Tue Wed Thu Fri Sat
 #&gt; 1   Sat   0   0   0   0   0   0   1
 #&gt; 2   Sun   1   0   0   0   0   0   0
 #&gt; 3   Mon   0   1   0   0   0   0   0
@@ -197,7 +200,7 @@ in the original vector. See the examples for details.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

@@ -89,7 +89,7 @@ data into a range with 0 mean and unit variance." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -100,7 +100,7 @@ data into a range with 0 mean and unit variance." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/DoktorMike/datools/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -127,7 +127,7 @@ data into a range with 0 mean and unit variance." />
 data into a range with 0 mean and unit variance.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>normalize</span>(<span class='no'>x</span>)</pre>
+    <pre class="usage"><span class='fu'>normalize</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -143,7 +143,8 @@ data into a range with 0 mean and unit variance.</p>
     <p>the normalized vector of numbers</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>normalize</span>(<span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='fl'>10</span>, <span class='fl'>20</span>, <span class='fl'>10</span>))</div><div class='output co'>#&gt; <span class='error'>Error in (function (classes, fdef, mtable) {    methods &lt;- .findInheritedMethods(classes, fdef, mtable)    if (length(methods) == 1L)         return(methods[[1L]])    else if (length(methods) == 0L) {        cnames &lt;- paste0("\"", vapply(classes, as.character,             ""), "\"", collapse = ", ")        stop(gettextf("unable to find an inherited method for function %s for signature %s",             sQuote(fdef@generic), sQuote(cnames)), domain = NA)    }    else stop("Internal error in finding inherited methods; didn't return a unique method",         domain = NA)})(list("numeric"), new("standardGeneric", .Data = function (object,     ...) standardGeneric("normalize"), generic = structure("normalize", package = "BiocGenerics"),     package = "BiocGenerics", group = list(), valueClass = character(0),     signature = "object", default = NULL, skeleton = (function (object,         ...)     stop("invalid call in method dispatch to 'normalize' (no default method)",         domain = NA))(object, ...)), &lt;environment&gt;): unable to find an inherited method for function ‘normalize’ for signature ‘"numeric"’</span></div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>normalize</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fl'>10</span>, <span class='fl'>20</span>, <span class='fl'>10</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='error'>Error in (function (classes, fdef, mtable) {    methods &lt;- .findInheritedMethods(classes, fdef, mtable)    if (length(methods) == 1L)         return(methods[[1L]])    else if (length(methods) == 0L) {        cnames &lt;- paste0("\"", vapply(classes, as.character,             ""), "\"", collapse = ", ")        stop(gettextf("unable to find an inherited method for function %s for signature %s",             sQuote(fdef@generic), sQuote(cnames)), domain = NA)    }    else stop("Internal error in finding inherited methods; didn't return a unique method",         domain = NA)})(list("numeric"), new("standardGeneric", .Data = function (object,     ...) standardGeneric("normalize"), generic = structure("normalize", package = "BiocGenerics"),     package = "BiocGenerics", group = list(), valueClass = character(0),     signature = "object", default = NULL, skeleton = (function (object,         ...)     stop("invalid call in method dispatch to 'normalize' (no default method)",         domain = NA))(object, ...)), &lt;environment&gt;): unable to find an inherited method for function ‘normalize’ for signature ‘"numeric"’</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -159,7 +160,7 @@ data into a range with 0 mean and unit variance.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

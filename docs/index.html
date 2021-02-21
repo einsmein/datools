@@ -46,7 +46,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -57,7 +57,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/DoktorMike/datools/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -88,27 +88,30 @@
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>You can install datools from github with:</p>
-<div class="sourceCode" id="cb1"><pre class="r"><span class="co"># install.packages("devtools")</span>
-<span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span>(<span class="st">"DoktorMike/datools"</span>)</pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"DoktorMike/datools"</span><span class="op">)</span></code></pre></div>
 <p>Optionally you can also install the Rgraphviz package which is required for the graph learning visualization.</p>
-<div class="sourceCode" id="cb2"><pre class="r"><span class="kw">if</span> (!<span class="fu"><a href="https://rdrr.io/r/base/ns-load.html">requireNamespace</a></span>(<span class="st">"BiocManager"</span>, <span class="kw">quietly</span> <span class="kw">=</span> <span class="fl">TRUE</span>))
-    <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"BiocManager"</span>)
-<span class="kw pkg">BiocManager</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html">install</a></span>(<span class="st">"Rgraphviz"</span>)</pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html">requireNamespace</a></span><span class="op">(</span><span class="st">"BiocManager"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>
+    <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span>
+<span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html">install</a></span><span class="op">(</span><span class="st">"Rgraphviz"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="example" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example" class="anchor"></a>Example</h2>
 <p>Say you have a vector of weekdays and you would really like to have that one hot encoded for use in your algorithms then oneHotEncoder comes to the rescue!</p>
-<div class="sourceCode" id="cb3"><pre class="r"><span class="co">## basic example code</span>
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">datools</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">lubridate</span>)
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">## basic example code</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://doktormike.github.io/datools">datools</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://lubridate.tidyverse.org">lubridate</a></span><span class="op">)</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Attaching package: 'lubridate'</span>
 <span class="co">#&gt; The following objects are masked from 'package:base':</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt;     date, intersect, setdiff, union</span>
-<span class="fu"><a href="reference/oneHotEncoder.html">oneHotEncoder</a></span>(<span class="kw">x</span><span class="kw">=</span><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/day.html">wday</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span>(<span class="st">"2017-10-07"</span>), <span class="kw">by</span> <span class="kw">=</span><span class="st">"days"</span>, <span class="kw">length.out</span> <span class="kw">=</span> <span class="fl">10</span>),
-                     <span class="kw">label</span> <span class="kw">=</span> <span class="fl">TRUE</span>))
+<span class="fu"><a href="reference/oneHotEncoder.html">oneHotEncoder</a></span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="http://lubridate.tidyverse.org/reference/day.html">wday</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"2017-10-07"</span><span class="op">)</span>, by <span class="op">=</span><span class="st">"days"</span>, length.out <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>, 
+                     label <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt;    Data Sun Mon Tue Wed Thu Fri Sat</span>
 <span class="co">#&gt; 1   Sat   0   0   0   0   0   0   1</span>
 <span class="co">#&gt; 2   Sun   1   0   0   0   0   0   0</span>
@@ -119,33 +122,36 @@
 <span class="co">#&gt; 7   Fri   0   0   0   0   0   1   0</span>
 <span class="co">#&gt; 8   Sat   0   0   0   0   0   0   1</span>
 <span class="co">#&gt; 9   Sun   1   0   0   0   0   0   0</span>
-<span class="co">#&gt; 10  Mon   0   1   0   0   0   0   0</span></pre></div>
+<span class="co">#&gt; 10  Mon   0   1   0   0   0   0   0</span></code></pre></div>
 </div>
 <div id="pca-fun" class="section level2">
 <h2 class="hasAnchor">
 <a href="#pca-fun" class="anchor"></a>PCA fun</h2>
 <p>If you ever need to illustrate for your peers what sort of direction your original data is pointing to in the PCA space this function comes very much in handy.</p>
-<div class="sourceCode" id="cb4"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">datools</span>)
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="no">iris</span>)
-<span class="fu"><a href="reference/plotPCAComponent.html">plotPCAComponent</a></span>(<span class="no">iris</span>[,-<span class="fl">5</span>], <span class="no">iris</span>$<span class="no">Species</span>) + <span class="fu">theme_minimal</span>()</pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://doktormike.github.io/datools">datools</a></span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span>
+<span class="fu"><a href="reference/plotPCAComponent.html">plotPCAComponent</a></span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>,<span class="op">-</span><span class="fl">5</span><span class="op">]</span>, <span class="va">iris</span><span class="op">$</span><span class="va">Species</span><span class="op">)</span> <span class="op">+</span> <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/pcaplot-1.png"><!-- --></p>
 </div>
 <div id="indices" class="section level2">
 <h2 class="hasAnchor">
 <a href="#indices" class="anchor"></a>Indices</h2>
 <p>Splitting up a data.frame or a tibble into N buckets of size K is sometimes a hassle. The rangeToBuckets come to the rescue! In this example we’ll split up the mtcars dataset and perform a simple regression on each subset of the data and show the results.</p>
-<div class="sourceCode" id="cb5"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">datools</span>)
-<span class="no">indsList</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/rangeToBuckets.html">rangeToBuckets</a></span>(<span class="fl">1</span>:<span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span>(<span class="no">mtcars</span>), <span class="fl">10</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span>(<span class="no">indsList</span>, <span class="kw">function</span>(<span class="no">x</span>) <span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span>(<span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span>(<span class="no">mpg</span>~<span class="no">disp</span>, <span class="kw">data</span><span class="kw">=</span><span class="no">mtcars</span>[<span class="no">x</span>,])))
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://doktormike.github.io/datools">datools</a></span><span class="op">)</span>
+<span class="va">indsList</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/rangeToBuckets.html">rangeToBuckets</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span>, <span class="fl">10</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">indsList</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">mpg</span><span class="op">~</span><span class="va">disp</span>, data<span class="op">=</span><span class="va">mtcars</span><span class="op">[</span><span class="va">x</span>,<span class="op">]</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt;                    [,1]        [,2]        [,3]        [,4]</span>
 <span class="co">#&gt; (Intercept) 25.56380288 33.09625946 29.13295921 25.70222222</span>
-<span class="co">#&gt; disp        -0.02489719 -0.05094025 -0.03830431 -0.03555556</span></pre></div>
+<span class="co">#&gt; disp        -0.02489719 -0.05094025 -0.03830431 -0.03555556</span></code></pre></div>
 <p>Of course we can make this nices by running more splits and making all of it in one go</p>
-<div class="sourceCode" id="cb6"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">datools</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">dplyr</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span>(<span class="fu"><a href="reference/rangeToBuckets.html">rangeToBuckets</a></span>(<span class="fl">1</span>:<span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span>(<span class="no">mtcars</span>), <span class="fl">4</span>),
-       <span class="kw">function</span>(<span class="no">x</span>) <span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span>(<span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span>(<span class="no">mpg</span>~<span class="no">disp</span>, <span class="kw">data</span><span class="kw">=</span><span class="no">mtcars</span>[<span class="no">x</span>,]))) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span>() <span class="kw">%&gt;%</span> <span class="kw pkg">knitr</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span>()</pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://doktormike.github.io/datools">datools</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="fu"><a href="reference/rangeToBuckets.html">rangeToBuckets</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span>, <span class="fl">4</span><span class="op">)</span>, 
+       <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">mpg</span><span class="op">~</span><span class="va">disp</span>, data<span class="op">=</span><span class="va">mtcars</span><span class="op">[</span><span class="va">x</span>,<span class="op">]</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <table class="table">
 <thead><tr class="header">
 <th align="right">(Intercept)</th>
@@ -191,8 +197,9 @@
 <h2 class="hasAnchor">
 <a href="#discovering-relationships-in-your-dataset" class="anchor"></a>Discovering relationships in your dataset</h2>
 <p>Here we’ll look at some ways to detect dependencies and hierarchies between your variables in a given dataset. As per usual we’ll use a simple dataset that is available in R. The <code>mtcars</code> tadaaa! Let’s pretend you were given this dataset and have no clue how to best go about things and you feel like exploring. So let’s start by looking at the data.</p>
-<div class="sourceCode" id="cb7"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="no">mtcars</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span>(<span class="no">mtcars</span>, <span class="no">summary</span>) <span class="kw">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span>()
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">summary</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt;        Min.   1st Qu.  Median       Mean 3rd Qu.    Max.</span>
 <span class="co">#&gt; mpg  10.400  15.42500  19.200  20.090625   22.80  33.900</span>
 <span class="co">#&gt; cyl   4.000   4.00000   6.000   6.187500    8.00   8.000</span>
@@ -204,18 +211,20 @@
 <span class="co">#&gt; vs    0.000   0.00000   0.000   0.437500    1.00   1.000</span>
 <span class="co">#&gt; am    0.000   0.00000   0.000   0.406250    1.00   1.000</span>
 <span class="co">#&gt; gear  3.000   3.00000   4.000   3.687500    4.00   5.000</span>
-<span class="co">#&gt; carb  1.000   2.00000   2.000   2.812500    4.00   8.000</span></pre></div>
+<span class="co">#&gt; carb  1.000   2.00000   2.000   2.812500    4.00   8.000</span></code></pre></div>
 <p>So far so good. Now how do these guys relate to each other? Well we could go about this by fitting every single linear model we could given all variables. That still wouldn’t give us the hierarchy between all variables though. So can we do better? Why yes, yes we can.</p>
-<div class="sourceCode" id="cb8"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">datools</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">Rgraphviz</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">bnlearn</span>)
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="no">mtcars</span>)
-<span class="no">myfit</span><span class="kw">&lt;-</span><span class="fu"><a href="reference/discover_hierarchy_and_fit.html">discover_hierarchy_and_fit</a></span>(<span class="no">mtcars</span>)
-<span class="fu"><a href="https://rdrr.io/pkg/bnlearn/man/graphviz.plot.html">graphviz.plot</a></span>(<span class="no">myfit</span>)</pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://doktormike.github.io/datools">datools</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">Rgraphviz</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://www.bnlearn.com/">bnlearn</a></span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span>
+<span class="va">myfit</span><span class="op">&lt;-</span><span class="fu"><a href="reference/discover_hierarchy_and_fit.html">discover_hierarchy_and_fit</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/bnlearn/man/graphviz.plot.html">graphviz.plot</a></span><span class="op">(</span><span class="va">myfit</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/fitmodel-1.png"><!-- --></p>
 <p>So from this graph we can see that <code>qsec</code> is actually the last node in the hierarchy. Regression wise this node is affected by a lot of other variables but does not affect them in return. Notice here that we’re only measuring correlation and graph factorization here. This is not a proper causality claim, but it might be indicative of it.</p>
 <p>We could have a look at a textual representation of this graph as well if we’re not into visualizations.</p>
-<div class="sourceCode" id="cb9"><pre class="r"><span class="fu"><a href="https://rdrr.io/pkg/bnlearn/man/mb.html">arcs</a></span>(<span class="no">myfit</span>)
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/bnlearn/man/mb.html">arcs</a></span><span class="op">(</span><span class="va">myfit</span><span class="op">)</span>
 <span class="co">#&gt;       from   to    </span>
 <span class="co">#&gt;  [1,] "mpg"  "carb"</span>
 <span class="co">#&gt;  [2,] "cyl"  "mpg" </span>
@@ -235,23 +244,27 @@
 <span class="co">#&gt; [16,] "am"   "vs"  </span>
 <span class="co">#&gt; [17,] "am"   "gear"</span>
 <span class="co">#&gt; [18,] "gear" "carb"</span>
-<span class="co">#&gt; [19,] "carb" "hp"</span></pre></div>
+<span class="co">#&gt; [19,] "carb" "hp"</span></code></pre></div>
 <p>Say now that we want to know from this fit which variables <code>carb</code> is affected by and by how much. In this case we simply look at</p>
-<div class="sourceCode" id="cb10"><pre class="r"><span class="no">myfit</span>$<span class="no">carb</span>$<span class="no">coefficients</span>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">myfit</span><span class="op">$</span><span class="va">carb</span><span class="op">$</span><span class="va">coefficients</span>
 <span class="co">#&gt; (Intercept)         mpg         cyl        gear </span>
-<span class="co">#&gt;  -2.7816679  -0.1439035   0.3959199   1.6367526</span></pre></div>
+<span class="co">#&gt;  -2.7816679  -0.1439035   0.3959199   1.6367526</span></code></pre></div>
 <p>This can also be confirmed by running</p>
-<div class="sourceCode" id="cb11"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span>(<span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span>(<span class="no">carb</span>~<span class="no">mpg</span>+<span class="no">cyl</span>+<span class="no">gear</span>, <span class="kw">data</span><span class="kw">=</span><span class="no">mtcars</span>))
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">carb</span><span class="op">~</span><span class="va">mpg</span><span class="op">+</span><span class="va">cyl</span><span class="op">+</span><span class="va">gear</span>, data<span class="op">=</span><span class="va">mtcars</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; (Intercept)         mpg         cyl        gear </span>
-<span class="co">#&gt;  -2.7816679  -0.1439035   0.3959199   1.6367526</span></pre></div>
+<span class="co">#&gt;  -2.7816679  -0.1439035   0.3959199   1.6367526</span></code></pre></div>
 <p>in which you can see that the edges between each node is fitted with a maximum likelihood estimation. This is not the model you would have gotten even if you decided to model <code>carb</code> in a flat structure as evident from:</p>
-<div class="sourceCode" id="cb12"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span>(<span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span>(<span class="no">carb</span>~<span class="no">.</span>, <span class="kw">data</span><span class="kw">=</span><span class="no">mtcars</span>))
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">carb</span><span class="op">~</span><span class="va">.</span>, data<span class="op">=</span><span class="va">mtcars</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; (Intercept)         mpg         cyl        disp          hp        drat </span>
 <span class="co">#&gt; -2.46807501 -0.01378803  0.28536857 -0.01431005  0.01349808  0.41696616 </span>
 <span class="co">#&gt;          wt        qsec          vs          am        gear </span>
-<span class="co">#&gt;  1.53320915 -0.22493808 -0.23036244 -0.11878278  0.77153891</span></pre></div>
+<span class="co">#&gt;  1.53320915 -0.22493808 -0.23036244 -0.11878278  0.77153891</span></code></pre></div>
 <p>You can also get more information about a particular part of the graph by looking at the local model inside the graph.</p>
-<div class="sourceCode" id="cb13"><pre class="r"><span class="no">myfit</span>$<span class="no">qsec</span>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">myfit</span><span class="op">$</span><span class="va">qsec</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt;   Parameters of node qsec (Gaussian distribution)</span>
 <span class="co">#&gt; </span>
@@ -259,7 +272,7 @@
 <span class="co">#&gt; Coefficients:</span>
 <span class="co">#&gt; (Intercept)           hp           wt           vs  </span>
 <span class="co">#&gt; 16.02638440  -0.01767224   1.08994453   2.07551571  </span>
-<span class="co">#&gt; Standard deviation of the residuals: 0.8156723</span></pre></div>
+<span class="co">#&gt; Standard deviation of the residuals: 0.8156723</span></code></pre></div>
 </div>
 <div id="code-of-conduct" class="section level2">
 <h2 class="hasAnchor">
@@ -310,7 +323,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

@@ -90,7 +90,7 @@ and 1 respectively by default." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -101,7 +101,7 @@ and 1 respectively by default." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/DoktorMike/datools/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -129,7 +129,7 @@ data into a range between a and b which are given as parameters. They are 0
 and 1 respectively by default.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>standardize</span>(<span class='no'>x</span>, <span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>b</span> <span class='kw'>=</span> <span class='fl'>1</span>)</pre>
+    <pre class="usage"><span class='fu'>standardize</span><span class='op'>(</span><span class='va'>x</span>, a <span class='op'>=</span> <span class='fl'>0</span>, b <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -153,8 +153,9 @@ and 1 respectively by default.</p>
     <p>the rescaled vector of numbers</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>standardize</span>(<span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='fl'>10</span>, <span class='fl'>20</span>, <span class='fl'>10</span>))</div><div class='output co'>#&gt;  [1] 0.6523541 0.0000000 0.1804298 0.6444131 0.9106021 0.2085093 0.3280114
-#&gt;  [8] 0.6764051 1.0000000 0.8986831</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>standardize</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fl'>10</span>, <span class='fl'>20</span>, <span class='fl'>10</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;  [1] 0.4395550 0.3186083 1.0000000 0.5416054 0.4529807 0.0000000 0.3318735
+#&gt;  [8] 0.3600782 0.3717969 0.7227113</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -170,7 +171,7 @@ and 1 respectively by default.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

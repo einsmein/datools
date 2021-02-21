@@ -88,7 +88,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -99,7 +99,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/DoktorMike/datools/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -125,7 +125,7 @@
     <p>Calculate the Variance Inflation Factor for a dataset.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>vif</span>(<span class='no'>mod</span>)</pre>
+    <pre class="usage"><span class='fu'>vif</span><span class='op'>(</span><span class='va'>mod</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -141,15 +141,18 @@
     <p>A matrix containing the VIF and standardised VIF factors</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>MASS</span>)</div><div class='output co'>#&gt; <span class='message'></span>
+    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://www.stats.ox.ac.uk/pub/MASS4/'>MASS</a></span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'></span>
 #&gt; <span class='message'>Attaching package: ‘MASS’</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:dplyr’:</span>
 #&gt; <span class='message'></span>
-#&gt; <span class='message'>    select</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"birthwt"</span>)
-<span class='fu'>vif</span>(<span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span>(<span class='no'>bwt</span> ~ <span class='no'>low</span> + <span class='no'>smoke</span> + <span class='no'>age</span> + <span class='no'>race</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>birthwt</span>))</div><div class='output co'>#&gt;           GVIF Df GVIF^(1/(2*Df))
+#&gt; <span class='message'>    select</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='st'>"birthwt"</span><span class='op'>)</span>
+<span class='fu'>vif</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>bwt</span> <span class='op'>~</span> <span class='va'>low</span> <span class='op'>+</span> <span class='va'>smoke</span> <span class='op'>+</span> <span class='va'>age</span> <span class='op'>+</span> <span class='va'>race</span>, data <span class='op'>=</span> <span class='va'>birthwt</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;           GVIF Df GVIF^(1/(2*Df))
 #&gt; low   1.078953  1        1.038727
 #&gt; smoke 1.199359  1        1.095153
 #&gt; age   1.049576  1        1.024488
-#&gt; race  1.220827  1        1.104910</div><div class='input'><span class='fu'>vif</span>(<span class='no'>birthwt</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: essentially perfect fit: summary may be unreliable</span></div><div class='output co'>#&gt;           GVIF Df GVIF^(1/(2*Df))
+#&gt; race  1.220827  1        1.104910</div><div class='input'><span class='fu'>vif</span><span class='op'>(</span><span class='va'>birthwt</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: essentially perfect fit: summary may be unreliable</span></div><div class='output co'>#&gt;           GVIF Df GVIF^(1/(2*Df))
 #&gt; low   2.722267  1        1.649929
 #&gt; age   1.136348  1        1.065996
 #&gt; lwt   1.205593  1        1.097995
@@ -175,7 +178,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

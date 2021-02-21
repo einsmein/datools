@@ -89,7 +89,7 @@ to optimize the mutual information." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -100,7 +100,7 @@ to optimize the mutual information." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/DoktorMike/datools/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -127,7 +127,7 @@ to optimize the mutual information." />
 to optimize the mutual information.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>discover_variable_hierarchies</span>(<span class='no'>data</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>5</span>)</pre>
+    <pre class="usage"><span class='fu'>discover_variable_hierarchies</span><span class='op'>(</span><span class='va'>data</span>, n <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -147,42 +147,35 @@ to optimize the mutual information.</p>
     <p>a character matrix with columns from and to representing the variables that are related</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>iris</span>)
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>mtcars</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>dplyr</span>)
-<span class='fu'>discover_variable_hierarchies</span>(<span class='no'>mtcars</span>, <span class='fl'>10</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/reexports.html'>as_tibble</a></span>()</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 20 x 2</span><span>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
+<span class='fu'>discover_variable_hierarchies</span><span class='op'>(</span><span class='va'>mtcars</span>, <span class='fl'>10</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/as_tibble.html'>as_tibble</a></span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 24 x 2</span><span>
 #&gt;    from  to   
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>
-#&gt; </span><span style='color: #555555;'> 1</span><span> mpg   cyl  
-#&gt; </span><span style='color: #555555;'> 2</span><span> mpg   wt   
-#&gt; </span><span style='color: #555555;'> 3</span><span> cyl   vs   
-#&gt; </span><span style='color: #555555;'> 4</span><span> hp    qsec 
-#&gt; </span><span style='color: #555555;'> 5</span><span> am    gear 
-#&gt; </span><span style='color: #555555;'> 6</span><span> disp  drat 
-#&gt; </span><span style='color: #555555;'> 7</span><span> wt    am   
-#&gt; </span><span style='color: #555555;'> 8</span><span> gear  drat 
-#&gt; </span><span style='color: #555555;'> 9</span><span> wt    qsec 
-#&gt; </span><span style='color: #555555;'>10</span><span> cyl   qsec 
-#&gt; </span><span style='color: #555555;'>11</span><span> am    qsec 
-#&gt; </span><span style='color: #555555;'>12</span><span> am    vs   
-#&gt; </span><span style='color: #555555;'>13</span><span> gear  vs   
-#&gt; </span><span style='color: #555555;'>14</span><span> disp  hp   
-#&gt; </span><span style='color: #555555;'>15</span><span> gear  carb 
-#&gt; </span><span style='color: #555555;'>16</span><span> mpg   carb 
-#&gt; </span><span style='color: #555555;'>17</span><span> vs    disp 
-#&gt; </span><span style='color: #555555;'>18</span><span> wt    disp 
-#&gt; </span><span style='color: #555555;'>19</span><span> carb  hp   
-#&gt; </span><span style='color: #555555;'>20</span><span> wt    hp   </div><div class='input'><span class='fu'>discover_variable_hierarchies</span>(<span class='no'>iris</span>, <span class='fl'>10</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/reexports.html'>as_tibble</a></span>()</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 8 x 2</span><span>
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> cyl   disp 
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> mpg   cyl  
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> cyl   vs   
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> am    gear 
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> gear  drat 
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> am    vs   
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> cyl   drat 
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> wt    am   
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> disp  hp   
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> gear  carb 
+#&gt; </span><span style='color: #949494;'># … with 14 more rows</span><span></div><div class='input'><span class='fu'>discover_variable_hierarchies</span><span class='op'>(</span><span class='va'>iris</span>, <span class='fl'>10</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/as_tibble.html'>as_tibble</a></span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 8 x 2</span><span>
 #&gt;   from         to          
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       
-#&gt; </span><span style='color: #555555;'>1</span><span> Species      Petal.Length
-#&gt; </span><span style='color: #555555;'>2</span><span> Species      Petal.Width 
-#&gt; </span><span style='color: #555555;'>3</span><span> Petal.Length Sepal.Length
-#&gt; </span><span style='color: #555555;'>4</span><span> Species      Sepal.Width 
-#&gt; </span><span style='color: #555555;'>5</span><span> Petal.Length Petal.Width 
-#&gt; </span><span style='color: #555555;'>6</span><span> Sepal.Width  Sepal.Length
-#&gt; </span><span style='color: #555555;'>7</span><span> Petal.Width  Sepal.Width 
-#&gt; </span><span style='color: #555555;'>8</span><span> Petal.Width  Sepal.Length</div></span></pre>
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> Species      Petal.Length
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> Species      Petal.Width 
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span> Petal.Length Sepal.Length
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span> Species      Sepal.Width 
+#&gt; </span><span style='color: #BCBCBC;'>5</span><span> Petal.Length Petal.Width 
+#&gt; </span><span style='color: #BCBCBC;'>6</span><span> Sepal.Width  Sepal.Length
+#&gt; </span><span style='color: #BCBCBC;'>7</span><span> Petal.Width  Sepal.Length
+#&gt; </span><span style='color: #BCBCBC;'>8</span><span> Petal.Width  Sepal.Width </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -198,7 +191,7 @@ to optimize the mutual information.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
