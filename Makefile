@@ -11,6 +11,9 @@ all: check
 docs: build
 	Rscript -e 'pkgdown::build_site()'
 
+test:
+	Rscript -e 'devtools::test()'
+
 build:
 	R CMD build .
 

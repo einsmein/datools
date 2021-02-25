@@ -21,7 +21,7 @@ Intermediate NA's that occur between two observed values are not touched.
 Please use interpolation for that case.
 }
 \examples{
-extrapolateNA(c(NA,NA,NA,4,5,6,7, NA,NA))
-extrapolateNA(c(0,NA,NA,4,5,6,7, NA,NA))
-extrapolateNA(c(0,NA,NA,4,5,6,7, NA,9))
+extrapolateNA(c(NA, NA, NA, 4, 5, 6, 7, NA, NA))
+extrapolateNA(c(0, NA, NA, 4, 5, 6, 7, NA, NA))
+extrapolateNA(c(0, NA, NA, 4, 5, 6, 7, NA, 9))
 }
