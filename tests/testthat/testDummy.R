@@ -4,10 +4,10 @@ expect_equal(1, 1)
 
 context("Gantt")
 tmpdf <- structure(list(
-  Task = c("Task 1", "Task 2", "Task 3", "Task 4", "Task 5", "Task 6", "Task 7", "Task 8"),
-  Start = structure(c(16801, 16851, 16801, 16901, 16961, 16901, 17051, 17131), class = "Date"),
-  Duration = c(50L, 25L, 100L, 60L, 30L, 150L, 80L, 10L),
-  Resource = c("A", "B", "C", "C", "C", "A", "B", "B")
+    Task = c("Task 1", "Task 2", "Task 3", "Task 4", "Task 5", "Task 6", "Task 7", "Task 8"),
+    Start = structure(c(16801, 16851, 16801, 16901, 16961, 16901, 17051, 17131), class = "Date"),
+    Duration = c(50L, 25L, 100L, 60L, 30L, 150L, 80L, 10L),
+    Resource = c("A", "B", "C", "C", "C", "A", "B", "B")
 ),
 .Names = c("Task", "Start", "Duration", "Resource"),
 row.names = c(NA, -8L), class = "data.frame"
@@ -25,9 +25,13 @@ expect_equal(sum(nonFinToVal(tmpvec)), sum(tmpvec, na.rm = T))
 expect_equal(sum(nonFinToVal(tmpvec)), 30)
 expect_equal(sum(nonFinToVal(tmpvec, 0)), sum(naToVal(tmpvec, 0)))
 
-expect_equal(extrapolateNA(c(NA,NA,NA,4,5,6,7, NA,NA)), c(1, 2, 3, 4, 5, 6, 7, 8, 9))
-expect_equal(extrapolateNA(c(0,NA,NA,4,5,6,7, NA,NA)), c(0, NA, NA, 4, 5, 6, 7, 8, 9))
-expect_equal(extrapolateNA(c(0,NA,NA,4,5,6,7, NA,9)), c(0, NA, NA, 4, 5, 6, 7, NA, 9))
+expect_equal(extrapolateNA(c(NA, NA, NA, 4, 5, 6, 7, NA, NA)), c(1, 2, 3, 4, 5, 6, 7, 8, 9))
+expect_equal(extrapolateNA(c(0, NA, NA, 4, 5, 6, 7, NA, NA)), c(0, NA, NA, 4, 5, 6, 7, 8, 9))
+expect_equal(extrapolateNA(c(0, NA, NA, 4, 5, 6, 7, NA, 9)), c(0, NA, NA, 4, 5, 6, 7, NA, 9))
+
+expect_equal(interpolateNA(c(NA, NA, NA, 4, 5, 6, 7, NA, NA)), c(NA, NA, NA, 4, 5, 6, 7, NA, NA))
+expect_equal(interpolateNA(c(1, NA, NA, 4, 5, 6, 7, NA, NA)), c(1, 2, 3, 4, 5, 6, 7, NA, NA))
+expect_equal(interpolateNA(c(1, NA, NA, 4, 5, 6, 7, NA, 9)), c(1, 2, 3, 4, 5, 6, 7, 8, 9))
 
 context("Date functions")
 expect_equal(c("201747", "201548", "200953"), datools::dateToIsoWeek(c("2017-11-23", "2015-11-23", "2009-12-31")))
@@ -54,11 +58,10 @@ expect_lte(abs(find_lag(x, y)), 6)
 
 context("Range operations")
 expect_equal(
-  rangeToBuckets(1:nrow(mtcars), 9),
-  list(1:9, 10:18, 19:27, 28:32)
+    rangeToBuckets(1:nrow(mtcars), 9),
+    list(1:9, 10:18, 19:27, 28:32)
 )
 expect_equal(rangeToBuckets(1:3, 5), list(1:3))
 expect_equal(rangeToBuckets(1:3, 3), list(1:3))
 expect_equal(rangeToBuckets(1:3, 2), list(1:2, 3L))
 expect_equal(rangeToBuckets(-2:3, 4), list(-2:1, 2:3))
-

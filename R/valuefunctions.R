@@ -69,7 +69,7 @@ nonFinToVal <- function(x, y = 0) {
 #' extrapolateNA(c(0, NA, NA, 4, 5, 6, 7, NA, NA))
 #' extrapolateNA(c(0, NA, NA, 4, 5, 6, 7, NA, 9))
 extrapolateNA <- function(x, len = 3) {
-    #browser()
+    # browser()
     id <- val <- NA
     if (all(is.na(x))) {
         return(NA)
@@ -82,7 +82,7 @@ extrapolateNA <- function(x, len = 3) {
         tmpdfhead <- tmpdf[1:lastheadnaind, ]
         retdf <- retdf[-c(1:lastheadnaind), ]
         modeldfhead <- utils::head(modeldf, len)
-        if(nrow(modeldfhead)<3) stop("You need at least three observations with non NA")
+        if (nrow(modeldfhead) < 3) stop("You need at least three observations with non NA")
         myfit <- lm(val ~ id, data = modeldfhead)
         p <- stats::predict(myfit, newdata = tmpdfhead)
         tmpdfhead$val <- p
@@ -101,4 +101,28 @@ extrapolateNA <- function(x, len = 3) {
             dplyr::arrange(id)
     }
     dplyr::arrange(retdf, id)$val
+}
+
+#' Perform linear interpolation of a time series
+#'
+#' Just what it says with linear interpolation.
+#'
+#' @param x the vector to interpolate
+#' @importFrom stats approx
+#'
+#' @return an interpolated vector
+#' @export
+#'
+#' @examples
+#' interpolateNA(c(1,2,3, NA, NA, NA, 7, 8, 9))
+interpolateNA <- function(x) {
+    if (all(is.vector(x), is.numeric(x))) {
+        inds <- which(is.na(x))
+        if (length(inds) > 0) {
+              try({
+                  x[inds] <- stats::approx(x, xout = inds)$y
+              })
+          }
+    }
+    x
 }
