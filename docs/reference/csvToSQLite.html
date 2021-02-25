@@ -82,7 +82,7 @@ can work with really big data files without being limited by your machines RAM."
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">datools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.2</span>
       </span>
     </div>
 
@@ -192,13 +192,11 @@ can work with really big data files without being limited by your machines RAM.<
 #&gt; <span class='message'>  Month = </span><span style='color: #00BB00;'>col_double()</span><span>,</span>
 #&gt; <span class='message'>  Day = </span><span style='color: #00BB00;'>col_double()</span><span></span>
 #&gt; <span class='message'>)</span></div><div class='input'><span class='va'>mydb</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/src_dbi.html'>src_sqlite</a></span><span class='op'>(</span><span class='va'>sqlite_file</span>, create <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: `src_sqlite()` is deprecated as of dplyr 1.0.0.</span>
-#&gt; <span class='warning'>Please use `tbl()` directly with a database connection</span>
-#&gt; <span class='warning'></span><span style='color: #555555;'>This warning is displayed once every 8 hours.</span><span></span>
-#&gt; <span class='warning'></span><span style='color: #555555;'>Call `lifecycle::last_warnings()` to see where this warning was generated.</span><span></span></div><div class='input'><span class='va'>mydata</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/tbl.html'>tbl</a></span><span class='op'>(</span><span class='va'>mydb</span>, <span class='va'>table_name</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: `src_sqlite()` was deprecated in dplyr 1.0.0.</span>
+#&gt; <span class='warning'>Please use `tbl()` directly with a database connection</span></div><div class='input'><span class='va'>mydata</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/tbl.html'>tbl</a></span><span class='op'>(</span><span class='va'>mydb</span>, <span class='va'>table_name</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/pkg/Rgraphviz/man/AgEdge-class.html'>head</a></span><span class='op'>(</span><span class='va'>mydata</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; </span><span style='color: #949494;'># Source:   lazy query [?? x 6]</span><span>
-#&gt; </span><span style='color: #949494;'># Database: sqlite 3.34.0
+#&gt; </span><span style='color: #949494;'># Database: sqlite 3.34.1
 #&gt; #   [/home/michael/src/datools/docs/reference/example.sqlite]</span><span>
 #&gt;   Ozone Solar.R  Wind  Temp Month   Day
 #&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
