@@ -58,6 +58,7 @@ to_waterfall <- function(data) {
 #'
 #' @param data the data tibble to operate on
 #' @param label adding labels to plot. If true, data must contain `label` column
+#' @param nudge_scale scale to nudge the labels away from the bar
 #' @param ... other parameters passed to `geom_text`
 #' @importFrom ggplot2 aes element_text geom_rect theme theme_minimal xlab ylab scale_fill_brewer
 #'
@@ -84,7 +85,7 @@ to_waterfall <- function(data) {
 #' plot_waterfall(datadf) +
 #'   scale_fill_brewer(type = "seq", palette = 4) +
 #'   theme(axis.text.x = element_text(angle = 90, vjust = 0.9, hjust = 1))
-plot_waterfall <- function(data, label=TRUE, ...) {
+plot_waterfall <- function(data, label=TRUE, nudge_scale=1, ...) {
   desc <- amount <- end <- id <- type <- start <- direction <- NULL
   plot <- to_waterfall(data) %>% ggplot(aes(desc, fill = type)) +
     geom_rect(aes(
@@ -101,7 +102,7 @@ plot_waterfall <- function(data, label=TRUE, ...) {
   if(label) {
     plot <- plot +
       geom_text(aes(label=data$label,
-                    y=end + ifelse(end >= start, 1, -1) * max(end-start)/20),
+                    y=end + ifelse(end >= start, 1, -1) * nudge_scale * max(end-start)/20),
       ...)
   }
   plot
