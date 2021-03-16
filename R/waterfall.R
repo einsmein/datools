@@ -57,6 +57,8 @@ to_waterfall <- function(data) {
 #' sales modeling.
 #'
 #' @param data the data tibble to operate on
+#' @param label adding labels to plot. If true, data must contain `label` column
+#' @param ... other parameters passed to `geom_text`
 #' @importFrom ggplot2 aes element_text geom_rect theme theme_minimal xlab ylab scale_fill_brewer
 #'
 #' @return a ggplot of the waterfall plot
@@ -82,9 +84,9 @@ to_waterfall <- function(data) {
 #' plot_waterfall(datadf) +
 #'   scale_fill_brewer(type = "seq", palette = 4) +
 #'   theme(axis.text.x = element_text(angle = 90, vjust = 0.9, hjust = 1))
-plot_waterfall <- function(data) {
-  desc <- amount <- end <- id <- type <- start <- NULL
-  to_waterfall(data) %>% ggplot(aes(desc, fill = type)) +
+plot_waterfall <- function(data, label=TRUE, ...) {
+  desc <- amount <- end <- id <- type <- start <- direction <- NULL
+  plot <- to_waterfall(data) %>% ggplot(aes(desc, fill = type)) +
     geom_rect(aes(
       x = desc,
       xmin = id - 0.45,
@@ -96,5 +98,12 @@ plot_waterfall <- function(data) {
     xlab("") +
     ylab("Value") +
     theme(axis.text.x = element_text(angle = 45, vjust = 0.9, hjust = 1))
+  if(label) {
+    plot <- plot +
+      geom_text(aes(label=data$label,
+                    y=end + ifelse(end >= start, 1, -1) * max(end-start)/20),
+      ...)
+  }
+  plot
 }
 #
