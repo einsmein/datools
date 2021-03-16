@@ -86,8 +86,8 @@ to_waterfall <- function(data) {
 #'   scale_fill_brewer(type = "seq", palette = 4) +
 #'   theme(axis.text.x = element_text(angle = 90, vjust = 0.9, hjust = 1))
 plot_waterfall <- function(data, label=TRUE, nudge_scale=1, ...) {
-  desc <- amount <- end <- id <- type <- start <- direction <- NULL
-  plot <- to_waterfall(data) %>% ggplot(aes(desc, fill = type)) +
+  desc <- amount <- end <- id <- type <- start <- NULL
+  pl <- to_waterfall(data) %>% ggplot(aes(desc, fill = type)) +
     geom_rect(aes(
       x = desc,
       xmin = id - 0.45,
@@ -100,11 +100,11 @@ plot_waterfall <- function(data, label=TRUE, nudge_scale=1, ...) {
     ylab("Value") +
     theme(axis.text.x = element_text(angle = 45, vjust = 0.9, hjust = 1))
   if(label) {
-    plot <- plot +
+    pl <- pl +
       geom_text(aes(label=data$label,
                     y=end + ifelse(end >= start, 1, -1) * nudge_scale * max(end-start)/20),
       ...)
   }
-  plot
+  pl
 }
 #
